@@ -1,0 +1,1 @@
+// Cette route pourrait être utilisée pour afficher les détails d'une piste de musique spécifique. Par exemple, /track/24680 afficherait les détails de la piste avec l'ID 24680.

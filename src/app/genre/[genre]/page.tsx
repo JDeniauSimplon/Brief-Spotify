@@ -1,0 +1,1 @@
+// Cette route pourrait être utilisée pour afficher tous les morceaux d'un genre spécifique. Par exemple, /genre/jazz afficherait tous les morceaux du genre "jazz".

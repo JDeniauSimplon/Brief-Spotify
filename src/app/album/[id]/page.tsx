@@ -1,0 +1,1 @@
+// Cette route pourrait être utilisée pour afficher les détails d'un album spécifique. Par exemple, /album/67890 afficherait les détails de l'album avec l'ID 67890.

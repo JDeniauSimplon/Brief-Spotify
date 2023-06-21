@@ -1,0 +1,1 @@
+// Cette route pourrait être utilisée pour afficher la page d'un artiste spécifique. L'ID serait l'identifiant unique de l'artiste. Par exemple, /artist/12345 afficherait la page de l'artiste avec l'ID 12345.
