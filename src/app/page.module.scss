@@ -1,0 +1,15 @@
+.container {
+    padding-top: 67px;  // Ajustez cette valeur à la hauteur de votre en-tête
+    height: 200vh;
+    background-color: rgb(38, 38, 38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .childcontainer {
+        width: 95%;
+        height: 99%;
+        border-radius: 10px;
+        background-color: rgb(62, 62, 62);
+    }
+}
