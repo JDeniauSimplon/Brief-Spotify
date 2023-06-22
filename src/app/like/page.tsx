@@ -1,42 +1,26 @@
 import styles from '../page.module.scss';
+import fetchSpotifyApi from '../spotifyAPI';
 
-function PersonItem({nom, prénom, ville}) {
-	return (
-		<li>
-			<p>{prénom} - {nom}</p>
-			<p>{ville}</p>
-		</li>
-	)
-}
 
-const myLikes = () => {
-  	const people = [
-      { nom: "Doe", prénom: "John", ville: "New York" },
-      { nom: "Smith", prénom: "Alice", ville: "Paris" },
-      { nom: "Johnson", prénom: "David", ville: "Londres" },
-      { nom: "Dubois", prénom: "Élise", ville: "Montréal" },
-      { nom: "Lee", prénom: "Soo-Jin", ville: "Séoul" },
-      { nom: "Doe", prénom: "John", ville: "New York" },
-      { nom: "Smith", prénom: "Alice", ville: "Paris" },
-      { nom: "Johnson", prénom: "David", ville: "Londres" },
-    ];
-  return (
-    
-<div className={styles.container}>
-<div className={styles.childcontainer}>
-    <ul>
-    { people.map((person, index) => 
-      <PersonItem key={index + '_' + person.nom} nom={person.nom} prénom={person.prénom} ville={person.ville} />
-    )}
-  </ul>
-  
-</div>
-</div>
+export default async function Mylike() {
+  const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=8')
+  console.log(newReleases); // Ajoutez cette ligne
+
+
+  return ( <div>
+
+    <div className={styles.container}>
+      <div className={styles.childcontainer}>
+        <ul>
+          {newReleases?.albums.items.map((album: any) => (
+            <li>
+              <p>{album.name}</p>
+            </li>))}
+        </ul>
+       
+      </div>
+    </div>
+    </div>
   )
 }
-
-export default myLikes;
-
-
-
 
