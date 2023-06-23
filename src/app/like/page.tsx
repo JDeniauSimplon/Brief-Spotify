@@ -1,23 +1,18 @@
 import styles from '../page.module.scss';
-import fetchSpotifyApi from '../spotifyAPI';
+// import fetchSpotifyApi from '../spotifyAPI';
 
-
-export default async function Mylike() {
-  const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=8')
-  console.log(newReleases); // Ajoutez cette ligne
+// ajouter async a la function si besoin d'un await
+export default function Mylike() {
+  // const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=50')
+  // console.log(newReleases); // Ajoutez cette ligne
 
 
   return ( <div>
 
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-        <ul>
-          {newReleases?.albums.items.map((album: any) => (
-            <li>
-              <p>{album.name}</p>
-            </li>))}
-        </ul>
        
+      <p>ICI LES TITRES LIKEES</p>
       </div>
     </div>
     </div>

@@ -14,8 +14,11 @@ const fetchSpotifyApi = async (url: string) => {
                 });
 
             if (response.status === 200) {
+                
                 return response.data;
+               
             }
+         
         } catch (error) {
             return null
         }
