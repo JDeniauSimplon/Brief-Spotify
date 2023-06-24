@@ -1,6 +1,7 @@
 .container {
     padding-top: 62px;  // Ajustez cette valeur à la hauteur de votre en-tête
-    min-height: 100vh;
+    min-height: calc(100vh - 62px);
+
     background-color: rgb(38, 38, 38);
     display: flex;
     align-items: center;
@@ -8,12 +9,13 @@
  
     
     .childcontainer {
-      margin: 10px 0px 10px 0px;
-        width: 95%;
-        height: 99%;
-        border-radius: 10px;
-        background-color: rgb(85, 85, 85);
-display: flex;
+      margin: 10px;
+ 
+      min-height: 90vh;
+      border-radius: 10px;
+      background-color: rgb(85, 85, 85);
+      display: flex;
+      justify-content: center;
 
         .cards {
           display: flex;
@@ -27,7 +29,7 @@ display: flex;
             border: 1px solid #000;
             border-radius: 5px;
             padding: 20px;
-            margin: 10px;
+
             box-shadow: 0 0 10px rgba(0,0,0,0.15);
             width: 230px;
             height: 60px;

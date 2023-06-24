@@ -1,53 +1,145 @@
 .albumDetail {
-    display: flex;
-  
+  display: flex;
+  text-align: center;
+  margin: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  width: 90vw;
+  min-width: 95%;
+  border: solid black 3px;
+  border-radius: 10px;
+  flex-direction: column;
+
+  @media screen and (min-width: 880px) {
+    flex-direction: row;
+
+    border-radius-top-left: 10px;
+    border-radius-bottom-left: 10px;
+  }
+
+  .albumTracks {
     text-align: center;
-    margin: 10px;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    z-index: 1; 
-    &:hover {
-      transform: scale(1.05); 
+    margin: 0;
+    font-size: 25px;
+  }
+
+  .albumInformations {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .albumTitles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .albumImage {
+
+    
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    border-bottom: solid black 2px;
+
+    @media screen and (min-width: 880px) {
+      border-bottom: none;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 6px;
+      border-right: solid black 2px;
+      max-width: 50vw;
     }
-    .albumImage {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-  
+  }
+
+  .albumInfo {
+    background-color: rgb(0, 0, 0);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    color: white; // Définir une couleur par défaut pour le texte à l'intérieur de .albumInfo
+    margin: 0;
+
+
+    flex: 1 1 auto;
+
+    /* Cela permet à .albumInfo de grandir et de se rétrécir en fonction de l'espace disponible */
+    @media screen and (min-width: 880px) {
+
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      max-width: 100%;
+
+
+
     }
-  
-    .albumInfo {
-     
-     background-color: rgb(25, 25, 25);
-     border-top-right-radius: 8px;
-     border-bottom-right-radius: 8px;
-     width: 175px; 
-      .albumTitle {
-        font-weight: bold;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; 
-        
-        
-        color: white;
-        font-size: 20px;
-        padding-left: 3px;
-        padding-right: 3px;
-      }
-  
-      .albumArtist {
-        color: gray;
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-      
-        
-        font-size: 15px;
-        padding-left: 3px;
-        padding-right: 3px;
+
+    /* Styles pour la barre de défilement dans les navigateurs WebKit (Chrome, Safari, etc.) */
+    &::-webkit-scrollbar {
+      width: 10px;
+      /* Largeur de la barre de défilement */
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #000000;
+      /* Couleur de fond de la piste de la barre de défilement */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #000000;
+      /* Couleur de la barre de défilement elle-même */
+      border-radius: 5px;
+      /* Arrondir les coins de la barre de défilement */
+    }
+
+    /* Styles pour la barre de défilement dans Firefox */
+    scrollbar-color: #000000 #000000;
+
+    .albumTitle {
+      font-weight: bold;
+      color: white;
+      font-size: 35px;
+      display: flex;
+      justify-content: center;
+      margin: 10px 10px 10px 10px;
+      padding: 15px 15px 10px 15px;
+    }
+
+    .albumArtist {
+      color: gray;
+      margin-bottom: 10px;
+      font-size: 25px;
+      padding-left: 3px;
+      padding-right: 3px;
+      margin-top: 0;
+    }
+
+    // Nouveau style pour la date de parution
+    .releaseDate {
+      font-size: 12px;
+      margin-top: 10px;
+      color: #888;
+    }
+
+    // Nouveau style pour la liste des titres
+    ul {
+      list-style: none;
+      padding: 10px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      li {
+        margin-top: 10px;
+        font-size: 18px;
       }
     }
   }
-  
+}

@@ -17,7 +17,7 @@ const Home = async () => {
               title={album.name}
               imageUrl={album.images[0].url}
               artistName={album.artists[0].name}
-              albumId={album.id} // Utiliser album.id au lieu de albumId
+              albumId={album.id}
             />
           ))}
         </div>
