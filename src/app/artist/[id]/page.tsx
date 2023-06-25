@@ -1,1 +1,26 @@
-// Cette route pourrait être utilisée pour afficher la page d'un artiste spécifique. L'ID serait l'identifiant unique de l'artiste. Par exemple, /artist/12345 afficherait la page de l'artiste avec l'ID 12345.
+import styles from '../../page.module.scss';
+import ArtistDetail from '../../components/ArtistDetail/ArtistDetail';
+import fetchSpotifyApi from '../../spotifyAPI';
+
+export default async function Artist({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const artisId = params.id; // Accéder à l'ID de l'artiste via la clé 'id'
+  
+  const thisArtist = await fetchSpotifyApi(`artists/${artisId}`);
+
+  return (
+    <div className={styles.container}>
+      <div className={styles.childcontainer}>
+        <div className={styles.cards}>
+          <ArtistDetail
+            title={thisArtist?.name}
+            imageUrl={thisArtist?.images[0].url}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};

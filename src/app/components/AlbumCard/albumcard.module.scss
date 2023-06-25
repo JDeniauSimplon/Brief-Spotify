@@ -1,19 +1,19 @@
 .albumCard {
   display: flex;
-border: solid black 3px;
-border-radius: 11px;
+
+  border-radius: 11px;
   text-align: center;
   margin: 10px;
   text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  z-index: 1; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  height: fit-content;
+
+
   &:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
   }
 
-
-    
-  
   .albumImage {
     width: 150px;
     height: 150px;
@@ -24,18 +24,17 @@ border-radius: 11px;
   }
 
   .albumInfo {
-   
-   background-color: rgb(25, 25, 25);
-   border-top-right-radius: 8px;
-   border-bottom-right-radius: 8px;
-   width: 175px; 
+    background-color: rgb(25, 25, 25);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 175px;
+    
+    
     .albumTitle {
       font-weight: bold;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis; 
-      
-      
+      text-overflow: ellipsis;
       color: white;
       font-size: 15px;
       padding-left: 3px;
@@ -44,11 +43,9 @@ border-radius: 11px;
 
     .albumArtist {
       color: gray;
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
-    
-      
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       font-size: 15px;
       padding-left: 3px;
       padding-right: 3px;

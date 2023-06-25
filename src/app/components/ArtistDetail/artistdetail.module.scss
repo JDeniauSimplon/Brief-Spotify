@@ -1,0 +1,154 @@
+.albumDetail {
+    display: flex;
+    text-align: center;
+    margin: 10px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 90vw;
+    min-width: 95%;
+    border: solid black 3px;
+    border-radius: 10px;
+    flex-direction: column;
+  
+    @media screen and (min-width: 880px) {
+      flex-direction: row;
+      border-radius-top-left: 10px;
+      border-radius-bottom-left: 10px;
+    }
+  
+    .albumTracks {
+      text-align: center;
+      margin: 0;
+      font-size: 25px;
+    }
+  
+    .albumInformations {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .albumTitles {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .albumImage {
+      object-fit: cover;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      border-bottom: solid black 2px;
+  
+      @media screen and (min-width: 880px) {
+        border-bottom: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 6px;
+        border-right: solid black 2px;
+        max-width: 50vw;
+      }
+    }
+  
+    .albumInfo {
+      background-color: rgb(0, 0, 0);
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      color: white;
+      margin: 0;
+      flex: 1 1 auto;
+  
+      @media screen and (min-width: 880px) {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        max-width: 100%;
+      }
+  
+      /* Styles pour la barre de défilement dans les navigateurs WebKit (Chrome, Safari, etc.) */
+      &::-webkit-scrollbar {
+        width: 10px;
+        /* Largeur de la barre de défilement */
+      }
+  
+      &::-webkit-scrollbar-track {
+        background-color: #000000;
+        /* Couleur de fond de la piste de la barre de défilement */
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background-color: #000000;
+        /* Couleur de la barre de défilement elle-même */
+        border-radius: 5px;
+        /* Arrondir les coins de la barre de défilement */
+      }
+  
+      /* Styles pour la barre de défilement dans Firefox */
+      scrollbar-color: #000000 #000000;
+  
+      .albumTitle {
+        font-weight: bold;
+        color: white;
+        font-size: 35px;
+        display: flex;
+        justify-content: center;
+        margin: 10px 10px 10px 10px;
+        padding: 15px 15px 10px 15px;
+      }
+  
+      .albumArtist {
+        color: gray;
+        margin-bottom: 10px;
+        font-size: 25px;
+        padding-left: 3px;
+        padding-right: 3px;
+        margin-top: 0;
+      }
+  
+     
+      .releaseDate {
+        font-size: 12px;
+        margin-top: 10px;
+        color: #888;
+      }
+  
+  
+      ul {
+        list-style: none;
+        padding: 10px;
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        li {
+          margin-top: 10px;
+          font-size: 18px;
+        }
+      }
+
+      
+    }
+    .button {
+
+      background-image: url(/assets/return.svg);
+      background-color: white;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 34px;
+      width: 34px;
+      display: flex;
+      border-radius: 30px;
+      border: solid gray 2px;
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+  
+    }
+  }
