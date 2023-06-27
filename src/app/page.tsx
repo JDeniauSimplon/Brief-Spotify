@@ -5,7 +5,7 @@ import fetchSpotifyApi from './spotifyAPI';
 
 
 const Home = async () => {
-  const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=40');
+  const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=50');
 
 
   return (

@@ -8,10 +8,15 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
   height: fit-content;
-
-
+transition: transform 200ms;
   &:hover {
     transform: scale(1.05);
+
+    @media screen and (max-width: 880px) {
+      transform: scale(1.02);
+    }
+      
+    
   }
 
   .albumImage {

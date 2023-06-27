@@ -8,15 +8,13 @@ import AlbumCard from '../../components/AlbumCard/AlbumCard';
 export default async function SearchPage({
   params,
 }: {
-  params: { id: string };
+  params: { id: string; filterType: string };
 }) {
   const searchQuery = params.id;
+  const filterType = params.filterType || 'album,playlist,track,artist'; // type par défaut si aucun filtre n'est fourni
 
-  
-  // Utilisez searchQuery pour faire votre appel API
-  const thisSearch = await fetchSpotifyApi(`search?q=${searchQuery}&type=album%2Cplaylist%2Ctrack%2Cartist&market=FR&limit=50&offset=0`);
-
-
+  // Utilisez searchQuery et filterType pour faire votre appel API
+  const thisSearch = await fetchSpotifyApi(`search?q=${searchQuery}&type=${filterType}&market=FR&limit=50&offset=0`);
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
@@ -34,4 +32,5 @@ export default async function SearchPage({
     </div>
   );
 };
+
 

@@ -145,7 +145,7 @@
       display: flex;
       border-radius: 30px;
       border: solid gray 2px;
-  
+      transition: transform 200ms;
       &:hover {
         transform: scale(1.05);
       }

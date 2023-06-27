@@ -1,4 +1,6 @@
-import styles from '../../page.module.scss';
+
+
+import styles from './page.module.scss';
 import AlbumDetail from '../../components/AlbumDetail/AlbumDetail';
 import fetchSpotifyApi from '../../spotifyAPI';
 

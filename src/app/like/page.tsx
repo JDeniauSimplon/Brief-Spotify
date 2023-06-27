@@ -1,21 +1,28 @@
+'use client'
+
+import { useState, useEffect } from 'react';
 import styles from '../page.module.scss';
-// import fetchSpotifyApi from '../spotifyAPI';
 
-// ajouter async a la function si besoin d'un await
 export default function Mylike() {
-  // const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=50')
-  // console.log(newReleases); // Ajoutez cette ligne
+  const [likedTitles, setLikedTitles] = useState([]);
 
+  useEffect(() => {
+    // Récupérer les titres likés du localStorage
+    const titles = JSON.parse(localStorage.getItem('likedTitles') || '[]');
+    setLikedTitles(titles);
+  }, []);
 
-  return ( <div>
-
+  return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-       
-      <p>ICI LES TITRES LIKEES</p>
+        <p>ICI LES TITRES LIKEES</p>
+        <ul>
+          {likedTitles.map((title, index) => (
+            <li key={index}>{title}</li>
+          ))}
+        </ul>
       </div>
     </div>
-    </div>
-  )
+  );
 }
 
