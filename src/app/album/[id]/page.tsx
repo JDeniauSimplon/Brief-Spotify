@@ -1,9 +1,6 @@
-
-
 import styles from './page.module.scss';
 import AlbumDetail from '../../components/AlbumDetail/AlbumDetail';
 import fetchSpotifyApi from '../../spotifyAPI';
-
 
 export default async function AlbumPage({
   params,
@@ -24,7 +21,7 @@ export default async function AlbumPage({
             artistName={thisAlbum?.artists[0].name}
             artistsId={thisAlbum?.artists[0].id}
             releaseDate={thisAlbum?.release_date}
-            tracks={thisAlbum?.tracks.items}
+            tracks={thisAlbum?.tracks.items.map(item => ({name: item.name, id: item.id}))}
             artistImageUrl={thisArtist?.images[0].url}
             artistImageTitle={thisArtist?.name}
             

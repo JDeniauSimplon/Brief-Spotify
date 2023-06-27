@@ -16,10 +16,15 @@ const ArtistDetail: React.FC<ArtistDetailProps> = ({
   imageUrl,
 }) => {
   return (
+    
     <div className={styles.albumDetail}>
       <img src={imageUrl} alt={title} className={styles.albumImage} />
-      <Link href="" onClick={handleBackClick} className={styles.button}></Link>
+      <div className={styles.albumInfo}>
+      <Link href="" onClick={handleBackClick} className={styles.button} />
+        </div>
       </div>
+     
+       
   );
 };
 

@@ -2,7 +2,7 @@
 
 import styles from './albumdetail.module.scss';
 import Link from 'next/link';
-import { useState, useEffect } from 'react'; // Ajouter useEffect ici
+import { useState, useEffect } from 'react'; 
 
 interface AlbumDetailProps {
   title: string;
@@ -10,9 +10,10 @@ interface AlbumDetailProps {
   artistName: string;
   releaseDate: string;
   artistsId: string;
-  tracks: Array<{ name: string }>;
+  tracks: Array<{ name: string, id: string }>;
   artistImageUrl: string;
   artistImageTitle: string;
+ 
 }
 
 const handleBackClick = () => {
@@ -59,18 +60,20 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
       <div className={styles.albumInfo}>
         <div className={styles.albumInformations}>
           <h2 className={styles.albumTitle}>{title}</h2>
+        
           <Link href={`/artist/${artistsId}`} className={styles.albumArtist}>{artistName}</Link>
           <Link href={`/artist/${artistsId}`}><img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} /></Link>
         </div>
         <div className={styles.albumTitles}>
+        <p>Date de sortie: {releaseDate}</p>
           <p className={styles.albumTracks}>Titres:</p>
           <ul>
             {tracks.map((track, index) => (
               <li key={index}>
-                {track.name} 
+                 <Link className={styles.titleButton} href={`/track/${track.id}`}> {track.name} </Link>
                 <button
                   className={styles.like}
-                  style={{ color: likedTitles.includes(track.name) ? 'red' : 'black' }}
+                  style={{ color: likedTitles.includes(track.name) ? 'white' : 'black' }}
                   onClick={() => handleLikeClick(track.name)}
                 >
                   {likedTitles.includes(track.name) ? '❤️' : '🤍'}
@@ -79,7 +82,6 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
             ))}
           </ul>
         </div>
-        <p>Date de sortie: {releaseDate}</p>
         <Link href="" onClick={handleBackClick} className={styles.button}></Link>
       </div>
     </div>
@@ -87,4 +89,3 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
 };
 
 export default AlbumDetail;
-         

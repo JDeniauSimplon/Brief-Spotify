@@ -9,15 +9,15 @@
   border: solid black 3px;
   border-radius: 10px;
   flex-direction: column;
-background-color: #000000;
+  background-color: #000000;
 
- 
+
 
   @media screen and (min-width: 880px) {
     flex-direction: row;
     min-height: 90vh;
     max-height: 90vh;
-   min-width: 87vw;
+    min-width: 87vw;
   }
 
   .albumTracks {
@@ -37,41 +37,68 @@ background-color: #000000;
   }
 
   .albumImage {
- object-fit:cover;
+    object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     border-bottom: solid black 2px;
-
+    width: 90vw;
+    height: 90vw;
 
     @media screen and (min-width: 880px) {
-     border-radius: 6px;
+      border-radius: 6px;
       max-width: 50vw;
-      width: 40vw;
-      height: 40vw;
+      width: 30vw;
+      height: 30vw;
       border: solid white 2px;
       margin: 4vh;
-    ;
-    }
-  }
-  .artistImage {
-    border-radius: 50%;
-    height: 75px;
-    width: 75px;
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: solid white 2px;
-    object-fit: cover;
-    &:hover {
-      transform: scale(1.02);
-    }
-    @media screen and (min-width: 880px) {
-  
-      height: 100px;
-      width: 100px;
+      ;
     }
   }
 
+
+  .redirectButtons {
+    display: flex;
+    flex-direction: row;
+    .artistImage {
+      border-radius: 50%;
+      height: 45px;
+      width: 45px;
+      margin: 0 auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: solid white 2px;
+      object-fit: cover;
+  
+      &:hover {
+        transform: scale(1.02);
+      }
+  
+      @media screen and (min-width: 880px) {
+  
+        height: 75px;
+        width: 75px;
+      }
+    }
+gap: 5px;
+    .artistButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: black;
+      margin-bottom: 10px;
+      font-size: 20px;
+      padding-left: 3px;
+      padding-right: 3px;
+      margin-top: 0;
+      text-decoration: none;
+      font-weight: bold;
+      &:hover {
+        transform: scale(1.02);
+      }  
+    }
+
+  }
   .albumInfo {
     background-color: rgb(0, 0, 0);
     border-bottom-left-radius: 6px;
@@ -84,7 +111,7 @@ background-color: #000000;
     display: flex;
     flex-direction: column;
     align-items: center;
-  
+
     @media screen and (min-width: 880px) {
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
@@ -95,7 +122,7 @@ background-color: #000000;
       max-width: 100%;
       flex-direction: column;
       justify-content: flex-start;
-  
+
     }
 
     /* Styles pour la barre de défilement dans les navigateurs WebKit (Chrome, Safari, etc.) */
@@ -120,13 +147,47 @@ background-color: #000000;
     scrollbar-color: #000000 #000000;
 
     .albumTitle {
-      font-weight: bold;
-      color: white;
-      font-size: 35px;
+      border: solid white 2px;
+      margin-top: 8px;
+      font-size: 15px;
+      background-color: gray;
+      width: 100%;
+      max-width: 80vw;
+      min-width: 80vw;
+      padding: 0 5px 0 5px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      letter-spacing: 1px;
       display: flex;
-      justify-content: center;
-      margin: 10px 10px 10px 10px;
-      padding: 15px 15px 10px 15px;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      @media screen and (min-width: 880px) {
+        max-width: 35vw;
+        min-width: 35vw;
+
+        h2 {
+          padding-left: 5px;
+        }
+      }
+
+      .like {
+        font-size: 20px;
+        align-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        border-style: none;
+        justify-content: center;
+        transition: transform 200ms;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+
     }
 
 
@@ -140,9 +201,10 @@ background-color: #000000;
       margin-top: 0;
       text-decoration: none;
       font-weight: bold;
+
       &:hover {
         transform: scale(1.02);
-      }  
+      }
     }
 
 
@@ -153,104 +215,35 @@ background-color: #000000;
     }
 
 
-    ul {
-      list-style: none;
+    .button {
 
+      background-image: url(/assets/return.svg);
+      background-color: white;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 34px;
+      width: 34px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      li {
-        border: solid white 2px;
-        margin-top: 8px;
-        font-size: 18px;
-        background-color: gray;
-        width: 100%;
-        max-width: 80vw;
-        min-width: 80vw;
-@media screen and (min-width: 880px) {
+      border-radius: 30px;
+      border: solid gray 2px;
+      margin: 16px;
+      align-items: flex-start;
 
-        max-width: 35vw;
-        min-width: 35vw;
-}
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        letter-spacing: 1px;
+      align-items: flex-start;
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
 
-        .like {
-        
-       align-items: center;
-       background: none;
-       border: none;
-       cursor: pointer;
-         
-          display: flex;
-          border-style: none;
-          justify-content: center;
-          transition: transform 200ms;
-&:hover {
-  transform: scale(1.1);
-}        
+      @media screen and (min-width: 880px) {
+        padding-bottom: 34px;
+        height: auto;
+        transition: transform 200ms;
       }
-    }
-  }
-  
-.titleButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  margin-left: 10px;
-  margin-right: 10px;
 
-  text-decoration: none;
-  color: black;
-  text-align: start;
-  &:hover {
-    transform: scale(1.005);
+      &:hover {
+        transform: scale(1.05);
+      }
 
-    @media screen and (min-width: 880px) {
-      transform: scale(1.01);
     }
+
   }
 }
-
-  .button {
-
-    background-image: url(/assets/return.svg);
-    background-color: white;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 34px;
-    width: 34px;
-    display: flex;
-    border-radius: 30px;
-    border: solid gray 2px;
-    margin: 16px;
-    align-items: flex-start;
-
-align-items: flex-start;
-
-
-@media screen and (min-width: 880px) { 
-  padding-bottom: 34px;
-  height: auto;
-  transition: transform 200ms;
-}
-    &:hover {
-      transform: scale(1.05);
-    }
-
-  }
-
-}}
