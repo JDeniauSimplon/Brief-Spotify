@@ -6,6 +6,7 @@ export default async function AlbumPage({
   params,
 }: {
   params: { id: string };
+ 
 }) {
   const albumId = params.id; // Accéder à l'ID de l'album via la clé 'id'
   

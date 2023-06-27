@@ -70,14 +70,14 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
             <h2>{title}</h2>  
             <p>Durée:  {millisToMinutesAndSeconds(duration)}</p>
             <p>Artiste:</p>
-            <div className={styles.redirectButtons}>
-             <Link className={styles.artistButton} href={`/artist/${artistId}`}>
-              {artistName}
-             </Link>
-             <Link href={`/artist/${artistId}`}>
+            <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
+             <p className={styles.artistButton} >
+              {artistName} </p>
+        
+           
               <img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} />
-             </Link>
-</div>
+           
+</Link>
 
 
 

@@ -2,7 +2,7 @@
 
 import styles from './albumdetail.module.scss';
 import Link from 'next/link';
-import { useState, useEffect } from 'react'; 
+import { useState, useEffect } from 'react';
 
 interface AlbumDetailProps {
   title: string;
@@ -10,10 +10,10 @@ interface AlbumDetailProps {
   artistName: string;
   releaseDate: string;
   artistsId: string;
-  tracks: Array<{ name: string, id: string }>;
+  tracks: Array<{ name: never, id: string }>;
   artistImageUrl: string;
   artistImageTitle: string;
- 
+
 }
 
 const handleBackClick = () => {
@@ -40,7 +40,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
     setLikedTitles(storedLikes ? JSON.parse(storedLikes) : []);
   }, []);
 
-  const handleLikeClick = (trackName: string) => {
+  const handleLikeClick = (trackName: never) => {
     if (likedTitles.includes(trackName)) {
       // Supprimer le titre de la liste des likes
       const newLikedTitles = likedTitles.filter(title => title !== trackName);
@@ -60,22 +60,18 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
       <div className={styles.albumInfo}>
         <div className={styles.albumInformations}>
           <h2 className={styles.albumTitle}>{title}</h2>
-        
+
           <Link href={`/artist/${artistsId}`} className={styles.albumArtist}>{artistName}</Link>
           <Link href={`/artist/${artistsId}`}><img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} /></Link>
         </div>
         <div className={styles.albumTitles}>
-        <p>Date de sortie: {releaseDate}</p>
+          <p>Date de sortie: {releaseDate}</p>
           <p className={styles.albumTracks}>Titres:</p>
           <ul>
             {tracks.map((track, index) => (
               <li key={index}>
-                 <Link className={styles.titleButton} href={`/track/${track.id}`}> {track.name} </Link>
-                <button
-                  className={styles.like}
-                  style={{ color: likedTitles.includes(track.name) ? 'white' : 'black' }}
-                  onClick={() => handleLikeClick(track.name)}
-                >
+                <Link className={styles.titleButton} href={`/track/${track.id}`}> {track.name} </Link>
+                <button className={styles.like} onClick={() => handleLikeClick(track.name)}>
                   {likedTitles.includes(track.name) ? '❤️' : '🤍'}
                 </button>
               </li>
