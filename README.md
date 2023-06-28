@@ -1,7 +1,7 @@
 
 
-# Brief Spotify 
-<img src="/public/assets/logo.svg" alt="Logo Spotify" width="50" height="50">
+# Brief Spotify <img src="/public/assets/logo.svg" alt="Logo Spotify" width="50" height="50">
+
 
 ## 🌟 Introduction
 
