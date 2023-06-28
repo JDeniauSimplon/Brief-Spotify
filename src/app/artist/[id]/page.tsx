@@ -10,7 +10,7 @@ export default async function Artist({
   const artisId = params.id; // Accéder à l'ID de l'artiste via la clé 'id'
   
   const thisArtist = await fetchSpotifyApi(`artists/${artisId}`);
-
+console.log(thisArtist)
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>

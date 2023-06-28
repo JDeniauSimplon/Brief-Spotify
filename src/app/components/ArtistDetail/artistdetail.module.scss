@@ -1,7 +1,6 @@
 .albumDetail {
   display: flex;
   text-align: center;
-  margin: 6px;
   text-decoration: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 96vw;
@@ -11,13 +10,14 @@
   flex-direction: column;
 background-color: #000000;
 
- 
+margin: 6px;
 
   @media screen and (min-width: 880px) {
     flex-direction: row;
     min-height: 90vh;
     max-height: 90vh;
    min-width: 87vw;
+   margin: 0;
   }
 
   .albumTracks {

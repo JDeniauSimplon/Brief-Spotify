@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from '../page.module.scss';
+import Link from 'next/link';
 
 export default function Mylike() {
   const [likedTitles, setLikedTitles] = useState([]);
@@ -18,7 +19,7 @@ export default function Mylike() {
         <p>ICI LES TITRES LIKEES</p>
         <ul>
           {likedTitles.map((title, index) => (
-            <li key={index}>{title}</li>
+            <li key={index}><Link href="#"> {title}</Link></li>
           ))}
         </ul>
       </div>
