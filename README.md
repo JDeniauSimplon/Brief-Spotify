@@ -5,7 +5,7 @@
 
 ## 🌟 Introduction
 
-Ce projet est un MVP (Produit Minimum Viable) d'une plateforme de musique en ligne. Il a été développé en utilisant React et Next.js. L'objectif est de présenter une version simplifiée de la plateforme avec des fonctionnalités de base, pour évaluer son potentiel et recueillir des retours. 🚀
+Ce projet est un MVP (Produit Minimum Viable) d'une plateforme de musique en ligne. Il a été développé en utilisant React et Next.js. L'objectif est de présenter une version simplifiée de la plateforme avec des fonctionnalités de base, pour évaluer son potentiel et recueillir des retours.
 
 ## 📑 Fonctionnalités Principales
 
