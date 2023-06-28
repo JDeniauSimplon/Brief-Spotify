@@ -1,4 +1,6 @@
-![Logo Spotify](/public/assets/logo.svg) 
+
+<img src="/public/assets/logo.svg" alt="Logo Spotify" width="100" height="100">
+
 # Brief Spotify
 
 ## 🌟 Introduction
