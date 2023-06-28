@@ -1,4 +1,5 @@
-# 🎵 Plateforme de Musique - Projet MVP (Produit Minimum Viable) 🎧
+![Logo Spotify](/public/assets/logo.svg) 
+# Brief Spotify
 
 ## 🌟 Introduction
 
@@ -32,7 +33,7 @@ Ce projet intègre l'API de Spotify pour récupérer des données sur la musique
 Pour exécuter le projet en mode développement sur Linux/Ubuntu, suivez les étapes ci-dessous:
 
 1. 📂 Clonez le dépôt git sur votre machine locale.
-2. 📝 Créez un fichier `.env.local` à la racine du projet et renseignez vos identifiants de l'API Spotify (reportez-vous au fichier `.env.exemple` pour les instructions).
+2. 📝 Reportez-vous au fichier `.env.exemple` et suivez les instructions . Vous devrez renommer par la suite le fichier `.env.exemple` en `.env.local` à la racine du projet.
 3. 🖥️ Ouvrez un terminal à la racine du projet et exécutez les commandes suivantes:
 
 ```bash
