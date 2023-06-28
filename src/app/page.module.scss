@@ -11,13 +11,17 @@
     .childcontainer {
     
       margin: 10px;
-     width: 96vw;
+     width: 94vw;
      background-color: rgb(85, 85, 85);
      display: flex;
      justify-content: center;
      overflow-y: scroll;
      flex-direction: column;
      align-items: center;
+
+     @media (min-width: 880px) {
+      width: 96vw;
+     }
       &::-webkit-scrollbar {
         width: 0px;
         /* Largeur de la barre de défilement */

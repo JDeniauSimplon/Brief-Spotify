@@ -39,7 +39,7 @@ const Header = () => {
         <div className={styles.search}>
             <input onChange={handleSearchInput} onKeyDown={handleKeyDown} type="text"/>
             
-            <a role="button" onClick={handleSearchSubmit} className={styles.magnifyingGlass}></a>
+            <button role="button" onClick={handleSearchSubmit} className={styles.magnifyingGlass}></button>
             
         </div>
         <select onChange={handleFilterChange}>

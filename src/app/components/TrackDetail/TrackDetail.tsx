@@ -2,7 +2,7 @@
 
 import styles from './trackdetail.module.scss';
 import Link from 'next/link';
-import { useState, useEffect } from 'react'; // importez useState et useEffect
+import { useState, useEffect } from 'react';
 
 interface TrackDetailProps {
   title: string;
@@ -13,6 +13,7 @@ interface TrackDetailProps {
   duration: number;
   artistImageUrl: string;
   artistImageTitle: string;
+  trackId: string;
 }
 
 const handleBackClick = () => {
@@ -33,36 +34,38 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
   releaseDate,
   duration,
   artistImageUrl,
-  artistImageTitle
+  artistImageTitle,
+  trackId
 }) => {
-  // Initialisez un nouvel état pour le titre aimé
-  const [liked, setLiked] = useState(false);
+  const [likedTracks, setLikedTracks] = useState([]);
 
-  // Utilisez useEffect pour charger le statut "liked" du localStorage une fois le composant monté
   useEffect(() => {
-    const storedLikes = localStorage.getItem('likedTitles');
-    const likedTitles = storedLikes ? JSON.parse(storedLikes) : [];
-    setLiked(likedTitles.includes(title)); // Mettre à jour l'état 'liked'
-  }, [title]);
+    const storedLikes = localStorage.getItem('likedTracks');
+    const likedTracks = storedLikes ? JSON.parse(storedLikes) : [];
+    setLikedTracks(likedTracks);
+  }, []);
 
   const handleLikeClick = () => {
-    const storedLikes = localStorage.getItem('likedTitles');
-    let likedTitles = storedLikes ? JSON.parse(storedLikes) : [];
-    if (liked) {
-      // Supprimer le titre de la liste des likes
-      likedTitles = likedTitles.filter(likedTitle => likedTitle !== title);
+    const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
+
+    let newLikedTracks;
+    if (isLiked) {
+      // Supprimer la piste de la liste des likes
+      newLikedTracks = likedTracks.filter(likedTrack => likedTrack.id !== trackId);
     } else {
-      // Ajouter le titre à la liste des likes
-      likedTitles.push(title);
+      // Ajouter la piste à la liste des likes
+      newLikedTracks = [...likedTracks, { name: title, artist: artistName, id: trackId }];
     }
-    setLiked(!liked); // Mettre à jour l'état 'liked'
-    localStorage.setItem('likedTitles', JSON.stringify(likedTitles));
+
+    setLikedTracks(newLikedTracks);
+    localStorage.setItem('likedTracks', JSON.stringify(newLikedTracks));
   };
+
+  const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
 
   return (
     <div className={styles.albumDetail}>
       <div className={styles.albumInfo}>
-
         <img src={imageUrl} alt={title} className={styles.albumImage} />
         <p>Date de sortie: {releaseDate}</p>
         <div className={styles.albumInformations}>
@@ -71,22 +74,14 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
             <p>Durée:  {millisToMinutesAndSeconds(duration)}</p>
             <p>Artiste:</p>
             <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
-             <p className={styles.artistButton} >
-              {artistName} </p>
-        
-           
+              <p className={styles.artistButton}>{artistName}</p>
               <img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} />
-           
-</Link>
-
-
-
-             <button onClick={handleLikeClick} className={styles.like} style={{ color: liked ? 'red' : 'black' }}>
-               {liked ? '❤️' : '🤍'}
-             </button>
+            </Link>
+            <button onClick={handleLikeClick} className={styles.like} style={{ color: isLiked ? 'red' : 'black' }}>
+              {isLiked ? '❤️' : '🤍'}
+            </button>
           </div>
         </div>
-
         <Link href="" onClick={handleBackClick} className={styles.button} />
       </div>
     </div>
@@ -94,4 +89,3 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
 };
 
 export default TrackDetail;
-

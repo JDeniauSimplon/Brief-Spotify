@@ -1,34 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Plateforme de Musique - Projet MVP
 
-## Getting Started
+## Contexte du Projet
 
-First, run the development server:
+Ce projet est un Minimum Viable Product (MVP) pour une plateforme de musique développée avec React et Next.js.
+
+## Caractéristiques Principales
+
+- Barre de navigation comprenant un champ de recherche.
+- Page de recherche affichant des résultats pertinents avec pagination.
+- Page de détails affichant des informations sur l'élément sélectionné (artiste, albums, morceaux, etc.).
+- Système de favoris permettant à l'utilisateur de créer des playlists et d'ajouter/supprimer des morceaux (à noter que les données ne sont pas persistées et seront effacées à chaque rechargement de la page).
+
+## Fonctionnalités Bonus
+
+- Suggestions d'autres artistes sur la page de détails.
+- Possibilité de trier les résultats de recherche par catégories.
+
+## Utilisation de l'API Spotify
+
+Ce projet utilise l'API de Spotify.
+
+Lien vers la documentation de l'API : [Spotify Web API](https://developer.spotify.com/documentation/web-api)
+
+## Spécifications Techniques
+
+- Construire l'interface utilisateur avec des composants réutilisables afin de favoriser la maintenabilité et l'uniformité de l'application.
+- Les données sensibles, telles que les clés API, ne doivent pas être versionnées avec Git.
+
+## Développement
+
+Pour exécuter le projet en mode développement sur Linux/Ubuntu, vous devez tout d'abord renseigner vos identifiants de l'API Spotify dans le fichier `.env.local` à la racine du projet (vous pouvez vous référer au fichier `.env.exemple` qui contient les instructions à suivre).
+
+Ensuite, exécutez les commandes suivantes dans votre terminal à la racine du projet :
 
 ```bash
+npm install
+
+# puis
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Ouvrez votre navigateur et accédez à http://localhost:3000 pour visualiser le projet.
+N'oubliez pas de renseigner vos identifiants Spotify dans le fichier .env.local.

@@ -1,3 +1,8 @@
+// Fichier de configuration ESLint
+
+// EsLint est un outil qui permet de vérifier la syntaxe de votre code JavaScript.
+// Il permet de détecter les erreurs et de les corriger avant de lancer votre application. 
+
 {
   "extends": "next/core-web-vitals"
 }

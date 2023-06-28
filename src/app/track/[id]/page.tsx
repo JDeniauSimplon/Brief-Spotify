@@ -11,7 +11,7 @@ export default async function TrackPage({
 
   const thisTrack = await fetchSpotifyApi(`tracks/${trackId}?market=FR`);
   const thisArtist = await fetchSpotifyApi(`artists/${thisTrack?.artists[0].id}`);
-  console.log(thisTrack);
+  // console.log(thisTrack);
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
@@ -24,6 +24,7 @@ export default async function TrackPage({
           duration={thisTrack?.duration_ms}
           artistImageUrl={thisArtist?.images[0].url}
           artistImageTitle={thisArtist?.name}
+          trackId={thisTrack?.id}
         />
       </div>
     </div>
