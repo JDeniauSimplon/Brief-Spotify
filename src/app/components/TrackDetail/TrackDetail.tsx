@@ -16,6 +16,13 @@ interface TrackDetailProps {
   trackId: string;
 }
 
+interface LikedTrack {
+  name: string;
+  artist: string;
+  id: string;
+  artistImage: string;
+}
+
 const handleBackClick = () => {
   window.history.back();
 };
@@ -26,7 +33,7 @@ const millisToMinutesAndSeconds = (millis: number) => {
   return `${minutes}:${(seconds.length === 1) ? '0' : ''}${seconds}`;
 };
 
-const TrackDetail = ({
+const TrackDetail: React.FC<TrackDetailProps> = ({
   title,
   imageUrl,
   artistName,
@@ -36,23 +43,23 @@ const TrackDetail = ({
   artistImageUrl,
   artistImageTitle,
   trackId
-}: TrackDetailProps) => {
-  const [likedTracks, setLikedTracks] = useState<{ name: string; artist: string; id: string; }[]>([]);
+}) => {
+  const [likedTracks, setLikedTracks] = useState<LikedTrack[]>([]);
 
   useEffect(() => {
     const storedLikes = localStorage.getItem('likedTracks');
-    const likedTracks = storedLikes ? JSON.parse(storedLikes) : [];
-    setLikedTracks(likedTracks);
+    const parsedLikes: LikedTrack[] = storedLikes ? JSON.parse(storedLikes) : [];
+    setLikedTracks(parsedLikes);
   }, []);
 
   const handleLikeClick = () => {
     const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
 
-    let newLikedTracks;
+    let newLikedTracks: LikedTrack[];
     if (isLiked) {
       newLikedTracks = likedTracks.filter(likedTrack => likedTrack.id !== trackId);
     } else {
-      newLikedTracks = [...likedTracks, { name: title, artist: artistName, id: trackId }];
+      newLikedTracks = [...likedTracks, { name: title, artist: artistName, id: trackId, artistImage: artistImageUrl }];
     }
 
     setLikedTracks(newLikedTracks);
