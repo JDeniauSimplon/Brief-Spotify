@@ -41,7 +41,7 @@ Pour exécuter le projet en mode développement sur Linux/Ubuntu, suivez les ét
 ```bash
 npm install
 
-# puis
+# puis ->
 
 npm run dev
 ```
