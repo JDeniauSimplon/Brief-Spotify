@@ -18,7 +18,7 @@ const RootLayout = ({
     <html lang="fr">
       <body className={inter.className}>
         <Header />{children}
-        </body>
+      </body>
     </html>
   )
 }

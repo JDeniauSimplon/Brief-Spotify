@@ -2,15 +2,14 @@ import styles from './page.module.scss';
 import ArtistDetail from '../../components/ArtistDetail/ArtistDetail';
 import fetchSpotifyApi from '../../spotifyAPI';
 
-export default async function Artist({
+const Artist = async ({
   params,
 }: {
   params: { id: string };
-}) {
-  const artisId = params.id; // Accéder à l'ID de l'artiste via la clé 'id'
-  
-  const thisArtist = await fetchSpotifyApi(`artists/${artisId}`);
-// console.log(thisArtist)
+}) => {
+  const artistId = params.id;
+  const thisArtist = await fetchSpotifyApi(`artists/${artistId}`);
+
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
@@ -24,3 +23,5 @@ export default async function Artist({
     </div>
   );
 };
+
+export default Artist;

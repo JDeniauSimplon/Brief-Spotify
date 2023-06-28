@@ -4,8 +4,15 @@ import { useState, useEffect } from 'react';
 import styles from './page.module.scss';
 import Link from 'next/link';
 
-export default function Mylike() {
-  const [likedTracks, setLikedTracks] = useState([]);
+interface Track {
+  id: string;
+  name: string;
+  artist: string;
+  artistImage: string;
+}
+
+const Mylike = () => {
+  const [likedTracks, setLikedTracks] = useState<Track[]>([]);
 
   useEffect(() => {
     // Récupérer les pistes likées du localStorage
@@ -13,10 +20,10 @@ export default function Mylike() {
     setLikedTracks(tracks);
   }, []);
 
-  const handleRemoveClick = (trackId) => {
+  const handleRemoveClick = (trackId: string) => {
     // Supprimer la piste de la liste des likes
-    const newLikedTracks = likedTracks.filter(track => track.id !== trackId);
-    
+    const newLikedTracks = likedTracks.filter((track: Track) => track.id !== trackId);
+
     // Mettre à jour la liste des likes dans le state et dans le localStorage
     setLikedTracks(newLikedTracks);
     localStorage.setItem('likedTracks', JSON.stringify(newLikedTracks));
@@ -27,11 +34,9 @@ export default function Mylike() {
       <div className={styles.childcontainer}>
         <p>ICI LES TITRES LIKEES</p>
         <ul>
-          {likedTracks.map((track, index) => (
+          {likedTracks.map((track: Track, index: number) => (
             <li key={index}>
-              {/* Utiliser track.name pour le texte et track.id pour le lien */}
               <Link href={`/track/${track.id}`}>{track.name}</Link><Link href='#'> {track.artist}</Link> <img src={track.artistImage} className={styles.artistImage} />
-              {/* Ajouter un bouton pour supprimer la piste de la liste des likes */}
               <button onClick={() => handleRemoveClick(track.id)}>Supprimer</button>
             </li>
           ))}
@@ -39,4 +44,6 @@ export default function Mylike() {
       </div>
     </div>
   );
-}
+};
+
+export default Mylike;

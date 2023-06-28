@@ -6,10 +6,8 @@
     justify-content: space-around;
     position: fixed;
     width: 100%;
-    z-index: 100; 
+    z-index: 100;
 
-    // display: none;
-    
     .logo {
         background-image: url(/assets/logo.svg);
         background-position: center;
@@ -18,6 +16,7 @@
         height: 40px;
         width: 40px;
         transition: transform 200ms;
+
         &:hover {
             transform: scale(1.05);
         }
@@ -54,14 +53,12 @@
             width: 33px;
             display: flex;
             border: none;
-            padding: 0; 
-            outline: none; 
-            cursor: pointer; 
+            padding: 0;
+            outline: none;
+            cursor: pointer;
             -webkit-appearance: none; // Supprime le style de bouton pour Chrome et Safari
             -moz-appearance: none; // Supprime le style de bouton pour Firefox
             appearance: none; // Supprime le style de bouton pour le reste des navigateurs
-
-            
         }
     }
 
@@ -91,8 +88,5 @@
                 }
             }
         }
-
     }
-
-
 }

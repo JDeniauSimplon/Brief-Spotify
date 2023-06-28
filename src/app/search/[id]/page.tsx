@@ -1,26 +1,37 @@
-
 import styles from '../../page.module.scss';
 import fetchSpotifyApi from '../../spotifyAPI';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
 
+interface Album {
+  name: string;
+  images: { url: string }[];
+  artists: { name: string }[];
+  id: string;
+}
 
+interface SearchResults {
+  albums: {
+    items: Album[];
+  };
+}
 
-export default async function SearchPage({
-  params,
-}: {
-  params: { id: string; filterType: string };
-}) {
-  const searchQuery = params.id;
-  const filterType = params.filterType || 'album,playlist,track,artist'; // type par défaut si aucun filtre n'est fourni
+interface Params {
+  id: string;
+  filterType: string;
+}
 
-  // Utilisez searchQuery et filterType pour faire votre appel API
-  const thisSearch = await fetchSpotifyApi(`search?q=${searchQuery}&type=${filterType}&market=FR&limit=50&offset=0`);
+const SearchPage = async ({ params }: { params: Params }) => {
+  const { id: searchQuery, filterType = 'album,playlist,track,artist' } = params;
+
+  const thisSearch = await fetchSpotifyApi(`search?q=${searchQuery}&type=${filterType}&market=FR&limit=50&offset=0`) as SearchResults;
+
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
         <div className={styles.cards}>
-          {thisSearch?.albums.items.map((album: any) => (
+          {thisSearch?.albums.items.map((album: Album) => (
             <AlbumCard
+              key={album.id}
               title={album.name}
               imageUrl={album.images[0].url}
               artistName={album.artists[0].name}
@@ -33,4 +44,5 @@ export default async function SearchPage({
   );
 };
 
+export default SearchPage;
 

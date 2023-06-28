@@ -2,10 +2,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: rgb(38, 38, 38);
-        /* Styles pour la barre de défilement dans les navigateurs WebKit (Chrome, Safari, etc.) */
-        &::-webkit-scrollbar {
-            width: 0px;
-            /* Largeur de la barre de défilement */
-          }
-}
 
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+}

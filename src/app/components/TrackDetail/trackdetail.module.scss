@@ -10,8 +10,7 @@
   border-radius: 10px;
   flex-direction: column;
   background-color: #000000;
-min-height: 91vh;
-
+  min-height: 91vh;
 
   @media screen and (min-width: 880px) {
     flex-direction: row;
@@ -52,10 +51,8 @@ min-height: 91vh;
       height: 30vw;
       border: solid white 2px;
       margin: 4vh;
-      ;
     }
   }
-
 
   .redirectButtons {
     display: flex;
@@ -63,6 +60,7 @@ min-height: 91vh;
     border: solid black 2px;
     padding: 0px 15px 0 15px;
     text-decoration: none;
+    gap: 5px;
 
     .artistImage {
       border-radius: 50%;
@@ -73,12 +71,8 @@ min-height: 91vh;
       margin-bottom: 10px;
       border: solid white 2px;
       object-fit: cover;
-  
-     
-  
-
     }
-gap: 5px;
+
     .artistButton {
       display: flex;
       justify-content: center;
@@ -89,12 +83,10 @@ gap: 5px;
       padding-left: 3px;
       padding-right: 3px;
       margin-top: 0;
-      
       font-weight: bold;
-;
     }
-
   }
+
   .albumInfo {
     background-color: rgb(0, 0, 0);
     border-bottom-left-radius: 6px;
@@ -102,7 +94,6 @@ gap: 5px;
     color: white;
     margin: 0;
     flex: 1 1 auto;
-
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -118,29 +109,11 @@ gap: 5px;
       max-width: 100%;
       flex-direction: column;
       justify-content: flex-start;
-
     }
 
-    /* Styles pour la barre de défilement dans les navigateurs WebKit (Chrome, Safari, etc.) */
     &::-webkit-scrollbar {
       width: 0px;
-      /* Largeur de la barre de défilement */
     }
-
-    &::-webkit-scrollbar-track {
-      background-color: #000000;
-      /* Couleur de fond de la piste de la barre de défilement */
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #000000;
-      /* Couleur de la barre de défilement elle-même */
-      border-radius: 5px;
-      /* Arrondir les coins de la barre de défilement */
-    }
-
-    /* Styles pour la barre de défilement dans Firefox */
-    scrollbar-color: #000000 #000000;
 
     .albumTitle {
       border: solid white 2px;
@@ -182,11 +155,7 @@ gap: 5px;
           transform: scale(1.1);
         }
       }
-
-
     }
-
-
 
     .albumArtist {
       color: gray;
@@ -203,16 +172,13 @@ gap: 5px;
       }
     }
 
-
     .releaseDate {
       font-size: 12px;
       margin-top: 10px;
       color: #888;
     }
 
-
     .button {
-
       background-image: url(/assets/return.svg);
       background-color: white;
       background-position: center;
@@ -226,9 +192,6 @@ gap: 5px;
       margin: 16px;
       align-items: flex-start;
 
-      align-items: flex-start;
-
-
       @media screen and (min-width: 880px) {
         padding-bottom: 34px;
         height: auto;
@@ -238,8 +201,6 @@ gap: 5px;
       &:hover {
         transform: scale(1.05);
       }
-
     }
-
   }
 }

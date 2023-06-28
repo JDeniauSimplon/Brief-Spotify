@@ -2,20 +2,37 @@ import styles from './page.module.scss';
 import TrackDetail from '../../components/TrackDetail/TrackDetail';
 import fetchSpotifyApi from '../../spotifyAPI';
 
-export default async function TrackPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const trackId = params.id;
+interface Track {
+  name: string;
+  album: {
+    images: { url: string }[];
+    release_date: string;
+  };
+  artists: { id: string }[];
+  duration_ms: number;
+  id: string;
+}
 
-  const thisTrack = await fetchSpotifyApi(`tracks/${trackId}?market=FR`);
-  const thisArtist = await fetchSpotifyApi(`artists/${thisTrack?.artists[0].id}`);
-  // console.log(thisTrack);
+interface Artist {
+  name: string;
+  id: string;
+  images: { url: string }[];
+}
+
+interface Params {
+  id: string;
+}
+
+const TrackPage = async ({ params }: { params: Params }) => {
+  const { id: trackId } = params;
+
+  const thisTrack = (await fetchSpotifyApi(`tracks/${trackId}?market=FR`)) as Track;
+  const thisArtist = (await fetchSpotifyApi(`artists/${thisTrack?.artists[0].id}`)) as Artist;
+
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-        <TrackDetail 
+        <TrackDetail
           title={thisTrack?.name}
           imageUrl={thisTrack?.album.images[0].url}
           artistName={thisArtist?.name}
@@ -30,3 +47,5 @@ export default async function TrackPage({
     </div>
   );
 };
+
+export default TrackPage;

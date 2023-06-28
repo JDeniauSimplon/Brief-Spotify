@@ -24,9 +24,9 @@ const millisToMinutesAndSeconds = (millis: number) => {
   let minutes = Math.floor(millis / 60000);
   let seconds = ((millis % 60000) / 1000).toFixed(0);
   return `${minutes}:${(seconds.length === 1) ? '0' : ''}${seconds}`;
-}
+};
 
-const TrackDetail: React.FC<TrackDetailProps> = ({
+const TrackDetail = ({
   title,
   imageUrl,
   artistName,
@@ -36,8 +36,8 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
   artistImageUrl,
   artistImageTitle,
   trackId
-}) => {
-  const [likedTracks, setLikedTracks] = useState([]);
+}: TrackDetailProps) => {
+  const [likedTracks, setLikedTracks] = useState<{ name: string; artist: string; id: string; }[]>([]);
 
   useEffect(() => {
     const storedLikes = localStorage.getItem('likedTracks');
@@ -50,10 +50,8 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
 
     let newLikedTracks;
     if (isLiked) {
-      // Supprimer la piste de la liste des likes
       newLikedTracks = likedTracks.filter(likedTrack => likedTrack.id !== trackId);
     } else {
-      // Ajouter la piste à la liste des likes
       newLikedTracks = [...likedTracks, { name: title, artist: artistName, id: trackId }];
     }
 
@@ -70,8 +68,8 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
         <p>Date de sortie: {releaseDate}</p>
         <div className={styles.albumInformations}>
           <div className={styles.albumTitle}>
-            <h2>{title}</h2>  
-            <p>Durée:  {millisToMinutesAndSeconds(duration)}</p>
+            <h2>{title}</h2>
+            <p>Durée: {millisToMinutesAndSeconds(duration)}</p>
             <p>Artiste:</p>
             <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
               <p className={styles.artistButton}>{artistName}</p>

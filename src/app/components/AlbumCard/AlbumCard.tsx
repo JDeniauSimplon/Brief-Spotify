@@ -10,8 +10,7 @@ interface AlbumCardProps {
   albumId: string;
 }
 
-const AlbumCard: React.FC<AlbumCardProps> = ({ title, imageUrl, artistName, albumId }) => {
-
+const AlbumCard = ({ title, imageUrl, artistName, albumId }: AlbumCardProps) => {
   return (
     <Link href={`/album/${albumId}`} className={styles.albumCard}>
       <img src={imageUrl} alt={title} className={styles.albumImage} />
@@ -24,4 +23,3 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ title, imageUrl, artistName, albu
 };
 
 export default AlbumCard;
-

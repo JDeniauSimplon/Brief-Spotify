@@ -10,10 +10,18 @@ interface AlbumDetailProps {
   artistName: string;
   releaseDate: string;
   artistsId: string;
-  tracks: Array<{ name: never, id: string }>;
+  tracks: Array<{ name: string, id: string }>;
   artistImageUrl: string;
   artistImageTitle: string;
 }
+
+// Définir un type pour les pistes aimées
+type LikedTrack = {
+  name: string;
+  id: string;
+  artist: string;
+  artistImage: string;
+};
 
 const handleBackClick = () => {
   window.history.back();
@@ -31,7 +39,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
 }) => {
 
   // Initialisez likedTracks avec un tableau vide
-  const [likedTracks, setLikedTracks] = useState([]);
+  const [likedTracks, setLikedTracks] = useState<LikedTrack[]>([]);
 
   // Utilisez useEffect pour charger les pistes likées du localStorage une fois le composant monté
   useEffect(() => {
@@ -39,8 +47,8 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
     setLikedTracks(storedLikes ? JSON.parse(storedLikes) : []);
   }, []);
 
-  const handleLikeClick = (trackName: never, trackId: string, artistName: string, artistImageUrl: string) => {
-    const track = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl };
+  const handleLikeClick = (trackName: string, trackId: string, artistName: string, artistImageUrl: string) => {
+    const track: LikedTrack = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl };
     const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
 
     if (isLiked) {
@@ -56,14 +64,12 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
     }
   };
 
-
   return (
     <div className={styles.albumDetail}>
       <img src={imageUrl} alt={title} className={styles.albumImage} />
       <div className={styles.albumInfo}>
         <div className={styles.albumInformations}>
           <h2 className={styles.albumTitle}>{title}</h2>
-
           <Link href={`/artist/${artistsId}`} className={styles.albumArtist}>{artistName}</Link>
           <Link href={`/artist/${artistsId}`}><img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} /></Link>
         </div>
@@ -73,20 +79,19 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
           <ul>
             {tracks.map((track, index) => (
               <li key={index}>
-               <div className={styles.trackSlot}>
-               <div className={styles.trackLogo}></div> <div className={styles.trackNumber}>{index + 1}</div>
-               </div>
-               
-                <Link className={styles.titleButton} href={`/track/${track.id}`}> {track.name} </Link>
                 <div className={styles.trackSlot}>
-                <p>➕</p>
-                <button className={styles.like} onClick={() => handleLikeClick(track.name, track.id, artistName, artistImageUrl)}>
-                  {likedTracks.some(likedTrack => likedTrack.id === track.id) ? '❤️' : '🤍'}
-                </button>
+                  <div className={styles.trackLogo}></div>
+                  <div className={styles.trackNumber}>{index + 1}</div>
+                </div>
+                <Link className={styles.titleButton} href={`/track/${track.id}`}>{track.name}</Link>
+                <div className={styles.trackSlot}>
+                  <p>➕</p>
+                  <button className={styles.like} onClick={() => handleLikeClick(track.name, track.id, artistName, artistImageUrl)}>
+                    {likedTracks.some(likedTrack => likedTrack.id === track.id) ? '❤️' : '🤍'}
+                  </button>
                 </div>
               </li>
             ))}
-
           </ul>
         </div>
         <Link href="" onClick={handleBackClick} className={styles.button}></Link>

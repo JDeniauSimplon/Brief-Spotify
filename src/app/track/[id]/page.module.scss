@@ -1,24 +1,16 @@
 .container {
-    padding-top: 62px;  // Ajustez cette valeur à la hauteur de votre en-tête
-    min-height: calc(100vh - 62px);
-  
-    background-color: rgb(38, 38, 38);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   overflow-x: hidden;
-  
-  
-    .childcontainer {
+  padding-top: 62px;
+  min-height: calc(100vh - 62px);
+  background-color: rgb(38, 38, 38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  border-radius: 10px;
 
-      &::-webkit-scrollbar {
-        width: 0px;
-        /* Largeur de la barre de défilement */
-      }
-     border-radius: 10px;
-  
-      
+ .childcontainer {
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
   }
-  }
-  
-  
+}
