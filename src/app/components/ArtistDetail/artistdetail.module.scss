@@ -201,7 +201,6 @@
 
     .button {
       background-image: url(/assets/return.svg);
-      background-color: white;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -209,9 +208,10 @@
       width: 34px;
       display: flex;
       border-radius: 30px;
-      border: solid gray 2px;
+      border: solid rgb(255, 255, 255) 2px;
       margin: 16px;
       align-items: flex-start;
+      background-color: #1dc95c;
 
       @media screen and (min-width: 880px) {
         padding-bottom: 34px;

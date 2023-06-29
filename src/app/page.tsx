@@ -15,6 +15,7 @@ const Home = async () => {
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
+      <h2 className={styles.sectionTitle}>Nouveautés</h2>
         <div className={styles.cards}>
           {newReleases?.albums.items.map((album: Album) => (
             <AlbumCard

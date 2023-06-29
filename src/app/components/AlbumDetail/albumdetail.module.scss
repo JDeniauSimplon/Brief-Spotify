@@ -13,8 +13,8 @@
 
   @media screen and (min-width: 880px) {
     flex-direction: row;
-    min-height: 90vh;
-    max-height: 90vh;
+    min-height: 88vh;
+    max-height: 88vh;
     min-width: 87vw;
     margin: 0;
   }
@@ -36,6 +36,7 @@
   }
 
   .albumImage {
+    margin: 10px;
     object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -44,8 +45,8 @@
     @media screen and (min-width: 880px) {
       border-radius: 6px;
       max-width: 50vw;
-      width: 40vw;
-      height: 40vw;
+      width: 50vw;
+    
       border: solid white 2px;
       margin: 2vh;
     }
@@ -225,7 +226,6 @@
 
     .button {
       background-image: url(/assets/return.svg);
-      background-color: white;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -233,9 +233,10 @@
       width: 34px;
       display: flex;
       border-radius: 30px;
-      border: solid gray 2px;
+      border: solid rgb(255, 255, 255) 2px;
       margin: 16px;
       align-items: flex-start;
+      background-color: #1dc95c;
 
       @media screen and (min-width: 880px) {
         padding-bottom: 34px;

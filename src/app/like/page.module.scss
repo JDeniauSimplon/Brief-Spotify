@@ -10,19 +10,16 @@
   padding-top: 52px;
 
   .childcontainer {
-    margin: 10px;
+    margin-top: 20px;
     width: 94vw;
     background-color: rgb(85, 85, 85);
     display: flex;
-    justify-content: center;
     overflow-y: scroll;
     flex-direction: column;
     align-items: center;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    min-height: 90vh;
+    border-radius: 10px;
+    min-height: 88vh;
+    max-height: 88vh;
 
     &::-webkit-scrollbar {
       width: 0px;
@@ -45,29 +42,32 @@
         border: solid white 2px;
         margin-top: 8px;
         background-color: gray;
-        width: 100%;
-        max-width: 80vw;
-        min-width: 80vw;
+        max-width: 85vw;
+        min-width: 85vw;
         padding: 5px 10px 5px 10px;
         font-family: 'Gill Sans',
           'Gill Sans MT',
           Calibri,
           'Trebuchet MS',
           sans-serif;
-        letter-spacing: 1px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+ 
+        &:last-child {
+          margin-bottom: 20px;
+        }
 
         button {
           background: none;
           border: none;
           cursor: pointer;
           font-size: 25px;
+
           &:hover {
             transform: scale(1.005);
-    
+
             @media screen and (min-width: 880px) {
               transform: scale(1.01);
             }
@@ -77,7 +77,7 @@
         .trackNameArtistImage {
           display: flex;
           align-items: center;
-          
+
         }
 
         .titleButton {
@@ -86,10 +86,15 @@
           text-decoration: none;
           color: black;
           width: 40vw;
-    
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: column;
+          text-align: center;
+
           &:hover {
             transform: scale(1.005);
-    
+
             @media screen and (min-width: 880px) {
               transform: scale(1.01);
             }
@@ -101,8 +106,8 @@
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 50px;
-          width: 50px;
+          min-height: 50px;
+          min-width: 50px;
         }
 
         .trackSlot {
@@ -121,17 +126,16 @@
           }
         }
       }
-      }
     }
   }
+}
 
-  .artistImage {
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: solid white 2px;
-    object-fit: cover;
-  }
-
+.artistImage {
+  border-radius: 50%;
+  height: 3vh;
+  width: 3vh;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: solid white 2px;
+  object-fit: cover;
+}

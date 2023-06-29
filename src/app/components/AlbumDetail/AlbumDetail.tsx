@@ -49,7 +49,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
   }, []);
 
   const handleLikeClick = (trackName: string, trackId: string, artistName: string, artistImageUrl: string) => {
-    const track: LikedTrack = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl , artistsId: artistsId};
+    const track: LikedTrack = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl, artistsId: artistsId };
     const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
 
     if (isLiked) {
@@ -78,11 +78,10 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
           <p>Date de sortie: {releaseDate}</p>
           <p className={styles.albumTracks}>Titres :</p>
           <ul>
-            {tracks.map((track, index) => (
-              <li key={index}>
+            {tracks.map((track) => (
+              <li key={track.id}>
                 <div className={styles.trackSlot}>
                   <div className={styles.trackLogo}></div>
-                  <div className={styles.trackNumber}>{index + 1}</div>
                 </div>
                 <Link className={styles.titleButton} href={`/track/${track.id}`}>{track.name}</Link>
                 <div className={styles.trackSlot}>
@@ -93,6 +92,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
                 </div>
               </li>
             ))}
+
           </ul>
         </div>
         <Link href="" onClick={handleBackClick} className={styles.button}></Link>

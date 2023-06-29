@@ -70,27 +70,26 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
   const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
 
   return (
-    <div className={styles.albumDetail}>
-      <div className={styles.albumInfo}>
-        <img src={imageUrl} alt={title} className={styles.albumImage} />
+    <div className={styles.trackDetail}>
+      <div className={styles.trackInfo}>
+        <img src={imageUrl} alt={title} className={styles.trackImage} />
         <p>Date de sortie: {releaseDate}</p>
-        <div className={styles.albumInformations}>
-          <div className={styles.albumTitle}>
+          <div className={styles.trackTitle}>
             <div className={styles.trackLogo}></div>
             <h2>{title}</h2>
             <p>Durée: {millisToMinutesAndSeconds(duration)}</p>
-            <p>Artiste:</p>
+            <div className={styles.artistLink}>
             <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
               <p className={styles.artistButton}>{artistName}</p>
             </Link>
             <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
               <img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} />
             </Link>
+            </div>
             <button onClick={handleLikeClick} className={styles.like} style={{ color: isLiked ? 'red' : 'black' }}>
               {isLiked ? '❤️' : '🤍'}
             </button>
           </div>
-        </div>
         <Link href="" onClick={handleBackClick} className={styles.button} />
       </div>
     </div>

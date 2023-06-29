@@ -35,17 +35,16 @@ const Mylike = () => {
       <div className={styles.childcontainer}>
         <p>Mes favoris :</p>
         <ul>
-          {likedTracks.map((track: Track, index: number) => (
-            <li key={index}>
-              <div className={styles.trackLogo}></div>
-            
-              <Link className={styles.titleButton} href={`/track/${track.id}`}>{`${track.name} - ${track.artist}`}</Link>
-              <Link href={`/artist/${track.artistsId}`}><img src={track.artistImage} className={styles.artistImage} />
-              </Link>
-           
-              <button onClick={() => handleRemoveClick(track.id)}>❌</button>
-            </li>
-          ))}
+        {likedTracks.map((track: Track) => (
+  <li key={track.id}>
+    <div className={styles.trackLogo}></div>
+    <Link className={styles.titleButton} href={`/track/${track.id}`}>{`${track.name}`}</Link>
+    <Link className={styles.titleButton} href={`/artist/${track.artistsId}`}>{`${track.artist}`}<img src={track.artistImage} className={styles.artistImage} />
+    </Link>
+    <button onClick={() => handleRemoveClick(track.id)}>❌</button>
+  </li>
+))}
+
         </ul>
       </div>
     </div>

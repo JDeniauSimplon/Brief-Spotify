@@ -1,3 +1,4 @@
+// albumcard.module.scss
 .albumCard {
   display: flex;
   border-radius: 11px;
@@ -8,14 +9,6 @@
   z-index: 1;
   height: fit-content;
   transition: transform 200ms;
-
-  &:hover {
-    transform: scale(1.05);
-
-    @media screen and (max-width: 880px) {
-      transform: scale(1.02);
-    }
-  }
 
   .albumImage {
     width: 150px;
@@ -30,16 +23,31 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     width: 175px;
+    display: flex;
+    flex-direction: column;
+
+    .titleContainer {
+      overflow: hidden;
+      padding-left: 15px;
+      padding-right: 15px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     .albumTitle {
       font-weight: bold;
+      color: white;
+      font-size: 15px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: white;
-      font-size: 15px;
-      padding-left: 3px;
-      padding-right: 3px;
+
+      &.hovered {
+        
+        overflow: initial;
+        text-overflow: initial;
+        transition: transform 0.5s ease;
+      }
     }
 
     .albumArtist {
@@ -53,7 +61,32 @@
     }
 
     p {
-     color: black;
+      color: rgb(255, 255, 255);
     }
+  }
+
+  &:hover {
+    .albumInfo {
+      background-color: rgb(0, 0, 0);
+    }
+
+    &.longTitle {
+      .albumTitle {
+        animation: marquee 5s linear infinite;
+        white-space: nowrap;
+        text-overflow: clip;
+      
+      }
+    }
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-200%);
   }
 }

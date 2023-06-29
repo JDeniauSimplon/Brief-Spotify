@@ -1,4 +1,4 @@
-.albumDetail {
+.trackDetail {
   display: flex;
   text-align: center;
   text-decoration: none;
@@ -13,30 +13,23 @@
   min-height: 91vh;
 
   @media screen and (min-width: 880px) {
-    flex-direction: row;
     min-height: 90vh;
     max-height: 90vh;
-    min-width: 87vw;
-    margin: 0;
   }
 
-  .albumTracks {
-    text-align: center;
-    margin: 0;
-    font-size: 25px;
-  }
-
-  .albumInformations {
+  .trackInformations {
     display: flex;
     flex-direction: column;
   }
 
-  .albumTitles {
+  .trackTitles {
     display: flex;
     flex-direction: column;
+
+
   }
 
-  .albumImage {
+  .trackImage {
     object-fit: cover;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -61,6 +54,7 @@
     text-decoration: none;
     gap: 5px;
 
+              font-size: 45px;
     .artistImage {
       border-radius: 50%;
       height: 45px;
@@ -86,12 +80,13 @@
     }
   }
 
-  .albumInfo {
+  .trackInfo {
+    
     background-color: rgb(0, 0, 0);
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     color: white;
-    margin: 0;
+    margin: 10px;
     flex: 1 1 auto;
     overflow-y: scroll;
     display: flex;
@@ -114,7 +109,7 @@
       width: 0px;
     }
 
-    .albumTitle {
+    .trackTitle {
       border: solid white 2px;
       margin-top: 8px;
       background-color: gray;
@@ -130,10 +125,21 @@
       align-items: center;
 
       @media screen and (min-width: 880px) {
-        max-width: 35vw;
-        min-width: 35vw;
+        max-width: 85vw;
+        min-width: 85vw;
+        flex-direction: row;
       }
+      
+h2 {
+  margin: 10px;
+}
 
+      .artistLink {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      
       .like {
         font-size: 20px;
         align-items: center;
@@ -144,6 +150,9 @@
         border-style: none;
         justify-content: center;
         transition: transform 200ms;
+        @media screen and (min-width: 880px) {
+          margin-right: 10px;
+        }
 
         &:hover {
           transform: scale(1.05);
@@ -155,8 +164,12 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 50px;
-        width: 50px;
+        min-height: 50px;
+        min-width: 50px;
+        @media screen and (min-width: 880px) {
+          margin-left: 10px;
+        }
+      
       }
 
       .trackSlot {
@@ -164,6 +177,7 @@
         align-items: center;
 
         p {
+
           &:hover {
             transform: scale(1.05);
           }
@@ -176,7 +190,7 @@
       }
     }
 
-    .albumArtist {
+    .trackArtist {
       color: gray;
       margin-bottom: 10px;
       font-size: 20px;
@@ -199,7 +213,6 @@
 
     .button {
       background-image: url(/assets/return.svg);
-      background-color: white;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -207,9 +220,10 @@
       width: 34px;
       display: flex;
       border-radius: 30px;
-      border: solid gray 2px;
+      border: solid rgb(255, 255, 255) 2px;
       margin: 16px;
       align-items: flex-start;
+      background-color: #1dc95c;
 
       @media screen and (min-width: 880px) {
         padding-bottom: 34px;
