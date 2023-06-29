@@ -6,7 +6,7 @@ import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 
 const Header = () => {
     const [search, setSearch] = useState('');
-    const [filterType, setFilterType] = useState('album,playlist,track,artist');
+    const [filterType, setFilterType] = useState('album,artist');
 
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
@@ -38,11 +38,9 @@ const Header = () => {
                 <button role="button" onClick={handleSearchSubmit} className={styles.magnifyingGlass}></button>
             </div>
             <select onChange={handleFilterChange}>
-                <option value="album,playlist,track,artist">Tout</option>
+                <option value="album,artist">Tout</option>
                 <option value="album">Albums</option>
                 <option value="artist">Artistes</option>
-                <option value="track">Pistes</option>
-                <option value="playlist">Playlists</option>
             </select>
             <nav>
                 <ul>
@@ -56,4 +54,3 @@ const Header = () => {
 };
 
 export default Header;
-

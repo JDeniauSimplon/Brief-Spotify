@@ -9,6 +9,7 @@ interface Track {
   name: string;
   artist: string;
   artistImage: string;
+  artistsId: string;
 }
 
 const Mylike = () => {
@@ -32,12 +33,17 @@ const Mylike = () => {
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-        <p>ICI LES TITRES LIKEES</p>
+        <p>Mes favoris :</p>
         <ul>
           {likedTracks.map((track: Track, index: number) => (
             <li key={index}>
-              <Link href={`/track/${track.id}`}>{track.name}</Link><Link href='#'> {track.artist}</Link> <img src={track.artistImage} className={styles.artistImage} />
-              <button onClick={() => handleRemoveClick(track.id)}>Supprimer</button>
+              <div className={styles.trackLogo}></div>
+            
+              <Link className={styles.titleButton} href={`/track/${track.id}`}>{`${track.name} - ${track.artist}`}</Link>
+              <Link href={`/artist/${track.artistsId}`}><img src={track.artistImage} className={styles.artistImage} />
+              </Link>
+           
+              <button onClick={() => handleRemoveClick(track.id)}>❌</button>
             </li>
           ))}
         </ul>

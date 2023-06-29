@@ -21,6 +21,7 @@ interface LikedTrack {
   artist: string;
   id: string;
   artistImage: string;
+  artistsId: string;
 }
 
 const handleBackClick = () => {
@@ -59,7 +60,7 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
     if (isLiked) {
       newLikedTracks = likedTracks.filter(likedTrack => likedTrack.id !== trackId);
     } else {
-      newLikedTracks = [...likedTracks, { name: title, artist: artistName, id: trackId, artistImage: artistImageUrl }];
+      newLikedTracks = [...likedTracks, { name: title, artist: artistName, id: trackId, artistImage: artistImageUrl , artistsId: artistId}];
     }
 
     setLikedTracks(newLikedTracks);
@@ -75,11 +76,14 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
         <p>Date de sortie: {releaseDate}</p>
         <div className={styles.albumInformations}>
           <div className={styles.albumTitle}>
+            <div className={styles.trackLogo}></div>
             <h2>{title}</h2>
             <p>Durée: {millisToMinutesAndSeconds(duration)}</p>
             <p>Artiste:</p>
             <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
               <p className={styles.artistButton}>{artistName}</p>
+            </Link>
+            <Link className={styles.redirectButtons} href={`/artist/${artistId}`}>
               <img src={artistImageUrl} alt={artistImageTitle} className={styles.artistImage} />
             </Link>
             <button onClick={handleLikeClick} className={styles.like} style={{ color: isLiked ? 'red' : 'black' }}>

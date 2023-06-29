@@ -17,6 +17,7 @@ const AlbumCard = ({ title, imageUrl, artistName, albumId }: AlbumCardProps) => 
       <div className={styles.albumInfo}>
         <p className={styles.albumTitle}>{title}</p>
         <p className={styles.albumArtist}>{artistName}</p>
+        <p>album</p>
       </div>
     </Link>
   );

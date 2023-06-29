@@ -21,6 +21,7 @@ type LikedTrack = {
   id: string;
   artist: string;
   artistImage: string;
+  artistsId: string;
 };
 
 const handleBackClick = () => {
@@ -48,7 +49,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
   }, []);
 
   const handleLikeClick = (trackName: string, trackId: string, artistName: string, artistImageUrl: string) => {
-    const track: LikedTrack = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl };
+    const track: LikedTrack = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl , artistsId: artistsId};
     const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
 
     if (isLiked) {
@@ -75,7 +76,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
         </div>
         <div className={styles.albumTitles}>
           <p>Date de sortie: {releaseDate}</p>
-          <p className={styles.albumTracks}>Titres:</p>
+          <p className={styles.albumTracks}>Titres :</p>
           <ul>
             {tracks.map((track, index) => (
               <li key={index}>
