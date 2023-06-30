@@ -34,7 +34,7 @@ const millisToMinutesAndSeconds = (millis: number) => {
   return `${minutes}:${(seconds.length === 1) ? '0' : ''}${seconds}`;
 };
 
-const TrackDetail: React.FC<TrackDetailProps> = ({
+const TrackDetail = ({
   title,
   imageUrl,
   artistName,
@@ -44,8 +44,7 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
   artistImageUrl,
   artistImageTitle,
   trackId,
-  
-}) => {
+}: TrackDetailProps) => {
   const [likedTracks, setLikedTracks] = useState<LikedTrack[]>([]);
 
   useEffect(() => {

@@ -12,7 +12,12 @@ const Artist = async ({
   const artistGenres = thisArtist.genres; 
   const artistName = thisArtist.name; 
   
-  const similarArtists = (await fetchSpotifyApi(`artists/${artistId}/related-artists`)).artists;
+  const similarArtists = (await fetchSpotifyApi(`artists/${artistId}/related-artists`)).artists.map(artist => ({
+    id: artist.id,
+    name: artist.name,
+    imageUrl: artist.images[0]?.url
+  }));
+  
   
   // on récupère les albums de l'artiste
   const artistAlbums = (await fetchSpotifyApi(`artists/${artistId}/albums`)).items.map(album => ({

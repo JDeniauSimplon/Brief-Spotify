@@ -7,15 +7,22 @@ interface Album {
   images: { url: string }[];
   artists: { name: string }[];
   id: string;
+  album_type: string;
+}
+
+interface NewReleasesResponse {
+  albums: {
+    items: Album[];
+  };
 }
 
 const Home = async () => {
-  const newReleases = await fetchSpotifyApi('browse/new-releases?country=FR&limit=50');
+  const newReleases: NewReleasesResponse | undefined = await fetchSpotifyApi('browse/new-releases?country=FR&limit=50');
 
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-      <h2 className={styles.sectionTitle}>Nouveautés</h2>
+      <h2 className={styles.sectionTitle}>Les nouveautés</h2>
         <div className={styles.cards}>
           {newReleases?.albums.items.map((album: Album) => (
             <AlbumCard
@@ -23,6 +30,7 @@ const Home = async () => {
               imageUrl={album.images[0].url}
               artistName={album.artists[0].name}
               albumId={album.id}
+              albumType={album.album_type}
             />
           ))}
         </div>

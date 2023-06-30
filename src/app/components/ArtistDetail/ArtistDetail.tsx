@@ -4,6 +4,12 @@ import styles from './artistdetail.module.scss';
 import Link from 'next/link';
 import AlbumCard from '../AlbumCard/AlbumCard';
 
+interface Artist {
+  name: string;
+  id: string;
+  imageUrl: string;
+}
+
 interface Album {
   name: string;
   id: string;
@@ -16,7 +22,7 @@ interface ArtistDetailProps {
   imageUrl: string;
   artistName: string;
   artistGenres: string[];
-  similarArtists: { name: string; id: string }[];
+  similarArtists: Artist[];
   albums: Album[];
 }
 
@@ -30,14 +36,6 @@ const ArtistDetail = ({ title, imageUrl, artistName, artistGenres, similarArtist
     <div className={styles.albumInfo}>
       <h2>{artistName}</h2> 
       <p>Genres: {artistGenres.join(', ')}</p>
-      <h3>Artistes similaires:</h3>
-      <ul>
-        {similarArtists.map(artist => (
-          <li key={artist.id}>
-            <Link href={`/artist/${artist.id}`}>{artist.name}</Link>
-          </li>
-        ))}
-      </ul>
       <h3>Albums:</h3>
       <div className={styles.albumCardList}>
         {albums.map(album => (
@@ -50,6 +48,15 @@ const ArtistDetail = ({ title, imageUrl, artistName, artistGenres, similarArtist
           />
         ))}
       </div>
+      <h3>Artistes similaires:</h3>
+      <ul>
+      {similarArtists.map(artist => (
+        <li key={artist.id}>
+          <Link className={styles.similarArtists} href={`/artist/${artist.id}`}>{artist.name}</Link>
+         <Link href={`/artist/${artist.id}`}> <img src={artist.imageUrl} alt={artist.name} className={styles.similarArtistsImage} /> </Link>
+        </li>
+      ))}
+      </ul>
       <Link href="" onClick={handleBackClick} className={styles.button} />
     </div>
   </div>

@@ -7,6 +7,7 @@ interface Album {
   images: { url: string }[];
   artists: { name: string }[];
   id: string;
+  album_type: string;
 }
 
 interface SearchResults {
@@ -35,6 +36,7 @@ const SearchPage = async ({ params }: { params: Params }) => {
               imageUrl={album.images[0]?.url || '/assets/cover.png'}
               artistName={album.artists[0]?.name || 'Unknown artist'}
               albumId={album?.id}
+              albumType={album.album_type}
             />
           ))}
 

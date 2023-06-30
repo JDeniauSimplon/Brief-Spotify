@@ -9,9 +9,10 @@ interface AlbumCardProps {
   imageUrl: string;
   artistName: string;
   albumId: string;
+  albumType: string;
 }
 
-const AlbumCard = ({ title, imageUrl, artistName, albumId }: AlbumCardProps) => {
+const AlbumCard = ({ title, imageUrl, artistName, albumId, albumType }: AlbumCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const titleRef = useRef<HTMLParagraphElement>(null);
   const [isLongTitle, setIsLongTitle] = useState(false);
@@ -38,7 +39,7 @@ const AlbumCard = ({ title, imageUrl, artistName, albumId }: AlbumCardProps) => 
           </p>
         </div>
         <p className={styles.albumArtist}>{artistName}</p>
-        <p>album</p>
+        <p>{albumType}</p>
       </div>
     </Link>
   );
