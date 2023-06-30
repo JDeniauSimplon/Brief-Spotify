@@ -4,6 +4,8 @@ import styles from './header.module.scss';
 import Link from 'next/link';
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 
+let plusSymbol = '\u2795';
+
 const Header = () => {
     const [search, setSearch] = useState('');
  
@@ -35,7 +37,7 @@ const Header = () => {
                 <button role="button" onClick={handleSearchSubmit} className={styles.magnifyingGlass}></button>
             </div>
             <nav>
-              
+              <Link className={styles.playlist} href="/playlist">{plusSymbol}</Link>
                         <Link className={styles.like} href='/like' />
                    
                 

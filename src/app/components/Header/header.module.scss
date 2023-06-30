@@ -77,8 +77,8 @@
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
-                    height: 28px;
-                    width: 31px;
+                    height: 17px;
+                    width: 19px;
                     display: flex;
                     transition: transform 200ms;
 
@@ -86,7 +86,14 @@
                         transform: scale(1.05);
                     }
                 }
-            
+            .playlist {
+                font-size: 20px;
+               
+                text-decoration: none;
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
         
     }
 }

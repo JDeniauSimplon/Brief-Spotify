@@ -21,8 +21,8 @@ const AlbumPage = async ({
         <div className={styles.cards}>
           <AlbumDetail
             title={thisAlbum?.name}
-            imageUrl={thisAlbum?.images[0].url}
-            artistName={thisAlbum?.artists[0].name}
+            imageUrl={thisAlbum.images[0]?.url || '/assets/cover.png'}
+            artistName={thisAlbum?.artists[0].name || 'Unknown artist'}
             artistsId={thisAlbum?.artists[0].id}
             releaseDate={thisAlbum?.release_date}
             tracks={thisAlbum?.tracks.items.map((item: TrackItem) => ({name: item.name, id: item.id}))}

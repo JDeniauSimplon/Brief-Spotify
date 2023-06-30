@@ -34,8 +34,8 @@ const TrackPage = async ({ params }: { params: Params }) => {
       <div className={styles.childcontainer}>
         <TrackDetail
           title={thisTrack?.name}
-          imageUrl={thisTrack?.album.images[0].url}
-          artistName={thisArtist?.name}
+          imageUrl={thisTrack?.album.images[0]?.url || '/assets/cover.png'}
+          artistName={thisArtist?.name || 'Unknown artist'}
           artistId={thisArtist?.id}
           releaseDate={thisTrack?.album.release_date}
           duration={thisTrack?.duration_ms}

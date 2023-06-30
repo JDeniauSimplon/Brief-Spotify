@@ -31,13 +31,14 @@ const SearchPage = async ({ params }: { params: Params }) => {
         <div className={styles.cards}>
           {thisSearch?.albums.items.map((album: Album) => (
             <AlbumCard
-              key={album.id}
-              title={album.name}
-              imageUrl={album.images[0].url}
-              artistName={album.artists[0].name}
-              albumId={album.id}
+              key={album?.id}
+              title={album?.name}
+              imageUrl={album.images[0]?.url || '/assets/cover.png'}
+              artistName={album.artists[0]?.name || 'Unknown artist'}
+              albumId={album?.id}
             />
           ))}
+
         </div>
       </div>
     </div>

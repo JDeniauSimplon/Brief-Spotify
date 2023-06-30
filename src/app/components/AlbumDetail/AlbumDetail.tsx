@@ -4,6 +4,22 @@ import styles from './albumdetail.module.scss';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+let plusSymbol = '\u2795';
+
+interface Track {
+  id: string;
+  name: string;
+  artist: string;
+  artistImage: string;
+  artistsId: string;
+}
+
+interface Playlist {
+  id: string;
+  name: string;
+  tracks: Track[];
+}
+
 interface AlbumDetailProps {
   title: string;
   imageUrl: string;
@@ -15,20 +31,11 @@ interface AlbumDetailProps {
   artistImageTitle: string;
 }
 
-// Définir un type pour les pistes aimées
-type LikedTrack = {
-  name: string;
-  id: string;
-  artist: string;
-  artistImage: string;
-  artistsId: string;
-};
-
 const handleBackClick = () => {
   window.history.back();
 };
 
-const AlbumDetail: React.FC<AlbumDetailProps> = ({
+const AlbumDetail = ({
   title,
   imageUrl,
   artistName,
@@ -37,33 +44,83 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
   artistsId,
   artistImageUrl,
   artistImageTitle
-}) => {
+}: AlbumDetailProps) => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [likedTracks, setLikedTracks] = useState<Array<Track>>([]);
+  const [playlists, setPlaylists] = useState<Array<Playlist>>([]);
+  const [selectedPlaylist, setSelectedPlaylist] = useState<string>('');
 
-  // Initialisez likedTracks avec un tableau vide
-  const [likedTracks, setLikedTracks] = useState<LikedTrack[]>([]);
-
-  // Utilisez useEffect pour charger les pistes likées du localStorage une fois le composant monté
   useEffect(() => {
     const storedLikes = localStorage.getItem('likedTracks');
     setLikedTracks(storedLikes ? JSON.parse(storedLikes) : []);
   }, []);
 
-  const handleLikeClick = (trackName: string, trackId: string, artistName: string, artistImageUrl: string) => {
-    const track: LikedTrack = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl, artistsId: artistsId };
-    const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
+  useEffect(() => {
+    localStorage.setItem('likedTracks', JSON.stringify(likedTracks));
+  }, [likedTracks]);
 
-    if (isLiked) {
-      // Supprimer la piste de la liste des likes
-      const newLikedTracks = likedTracks.filter(likedTrack => likedTrack.id !== trackId);
-      setLikedTracks(newLikedTracks);
-      localStorage.setItem('likedTracks', JSON.stringify(newLikedTracks));
+  useEffect(() => {
+    const storedPlaylists = localStorage.getItem('playlists');
+    const parsedPlaylists = storedPlaylists ? JSON.parse(storedPlaylists) : [];
+    setPlaylists(parsedPlaylists);
+  
+    if (parsedPlaylists.length > 0) {
+      setSelectedPlaylist(parsedPlaylists[0].id);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('playlists', JSON.stringify(playlists));
+  }, [playlists]);
+
+  const handleLikeClick = (trackName: string, trackId: string, artistName: string, artistImageUrl: string) => {
+    const track: Track = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl, artistsId: artistsId };
+    const isTrackLiked = likedTracks.some(likedTrack => likedTrack.id === track.id);
+
+    if (isTrackLiked) {
+      // unliked the track
+      const updatedLikes = likedTracks.filter(likedTrack => likedTrack.id !== track.id);
+      setLikedTracks(updatedLikes);
     } else {
-      // Ajouter la piste à la liste des likes
-      const newLikedTracks = [...likedTracks, track];
-      setLikedTracks(newLikedTracks);
-      localStorage.setItem('likedTracks', JSON.stringify(newLikedTracks));
+      // liked the track
+      setLikedTracks(prevLikes => [...prevLikes, track]);
     }
   };
+
+  const handleOpenModal = (trackName: string, trackId: string, artistName: string, artistImageUrl: string) => {
+    const track: Track = { name: trackName, id: trackId, artist: artistName, artistImage: artistImageUrl, artistsId: artistsId };
+    setCurrentTrack(track);
+    setShowModal(true);
+  };
+
+  const handleAddToPlaylist = () => {
+    if (!currentTrack) return;
+
+    if (selectedPlaylist === '') {
+      alert('Veuillez sélectionner une playlist');
+      return;
+    }
+
+    const playlist = playlists.find(pl => pl.id === selectedPlaylist);
+    if (playlist && playlist.tracks.find(track => track.id === currentTrack.id)) {
+      alert('Cette piste est déjà dans la playlist !');
+      return;
+    }
+
+    const updatedPlaylists = playlists.map(playlist => {
+      if (playlist.id === selectedPlaylist) {
+        const newTracks = [...playlist.tracks, currentTrack];
+        return { ...playlist, tracks: newTracks };
+      }
+      return playlist;
+    });
+
+    setPlaylists(updatedPlaylists);
+    setShowModal(false);
+  };
+
+
 
   return (
     <div className={styles.albumDetail}>
@@ -85,21 +142,39 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
                 </div>
                 <Link className={styles.titleButton} href={`/track/${track.id}`}>{track.name}</Link>
                 <div className={styles.trackSlot}>
-                  <p>➕</p>
+                  <span className={styles.plusSymbol} onClick={() => handleOpenModal(track.name, track.id, artistName, artistImageUrl)}>{plusSymbol}</span>
                   <button className={styles.like} onClick={() => handleLikeClick(track.name, track.id, artistName, artistImageUrl)}>
                     {likedTracks.some(likedTrack => likedTrack.id === track.id) ? '❤️' : '🤍'}
                   </button>
                 </div>
               </li>
             ))}
-
           </ul>
         </div>
         <Link href="" onClick={handleBackClick} className={styles.button}></Link>
       </div>
+
+      {showModal && (
+        <div className={styles.modal}>
+          <h2>Ajouter le titre à une playlist</h2>
+          <select value={selectedPlaylist} onChange={(e) => setSelectedPlaylist(e.target.value)}>
+            {playlists.map((playlist) => (
+              <option key={playlist.id} value={playlist.id}>
+                {playlist.name}
+              </option>
+            ))}
+          </select>
+
+
+          <button onClick={handleAddToPlaylist}>➕</button>
+          <button onClick={() => setShowModal(false)}>Fermer</button>
+        </div>
+      )}
     </div>
   );
 };
 
 export default AlbumDetail;
+
+
 

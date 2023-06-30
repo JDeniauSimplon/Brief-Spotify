@@ -1,0 +1,141 @@
+.container {
+    padding-top: 62px;
+    min-height: calc(100vh - 62px);
+    background-color: rgb(38, 38, 38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    border-radius: 10px;
+    padding-top: 52px;
+  
+    .childcontainer {
+      margin-top: 20px;
+      width: 94vw;
+      background-color: rgb(85, 85, 85);
+      display: flex;
+      overflow-y: scroll;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      min-height: 88vh;
+      max-height: 88vh;
+  
+      &::-webkit-scrollbar {
+        width: 0px;
+      }
+  
+      @media (min-width: 880px) {
+        width: 96vw;
+      }
+  
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        max-width: 90vw;
+  
+        li {
+          border: solid white 2px;
+          margin-top: 8px;
+          background-color: gray;
+          max-width: 85vw;
+          min-width: 85vw;
+          padding: 5px 10px 5px 10px;
+          font-family: 'Gill Sans',
+            'Gill Sans MT',
+            Calibri,
+            'Trebuchet MS',
+            sans-serif;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+   
+          &:last-child {
+            margin-bottom: 20px;
+          }
+  
+          button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 25px;
+  
+            &:hover {
+              transform: scale(1.005);
+  
+              @media screen and (min-width: 880px) {
+                transform: scale(1.01);
+              }
+            }
+          }
+  
+          .trackNameArtistImage {
+            display: flex;
+            align-items: center;
+  
+          }
+  
+          .titleButton {
+            margin-left: 10px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: black;
+            width: 40vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            text-align: center;
+  
+            &:hover {
+              transform: scale(1.005);
+  
+              @media screen and (min-width: 880px) {
+                transform: scale(1.01);
+              }
+            }
+          }
+  
+          .trackLogo {
+            background-image: url(../../../public/assets/cover.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 50px;
+            min-width: 50px;
+          }
+  
+          .trackSlot {
+            display: flex;
+            align-items: center;
+  
+            p {
+              &:hover {
+                transform: scale(1.05);
+              }
+            }
+  
+            .trackNumber {
+              margin-left: 15px;
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .artistImage {
+    border-radius: 50%;
+    height: 3vh;
+    width: 3vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: solid white 2px;
+    object-fit: cover;
+  }
