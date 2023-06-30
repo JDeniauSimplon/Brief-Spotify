@@ -29,6 +29,18 @@
       width: 96vw;
     }
 
+    .fav {
+     
+      background-color: black;
+      color: white;
+      padding: 10px;
+      max-width: 85vw;
+    min-width: 85vw;
+    text-align: center;
+    margin: 10px;
+
+    }
+
     ul {
       list-style: none;
       display: flex;
@@ -54,7 +66,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
- 
+
         &:last-child {
           margin-bottom: 20px;
         }

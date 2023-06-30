@@ -33,7 +33,7 @@ const Mylike = () => {
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-        <p>Mes favoris :</p>
+        <span className={styles.fav}>Mes favoris :</span>
         <ul>
         {likedTracks.map((track: Track) => (
   <li key={track.id}>
