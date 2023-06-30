@@ -64,7 +64,7 @@ const AlbumDetail = ({
     const storedPlaylists = localStorage.getItem('playlists');
     const parsedPlaylists = storedPlaylists ? JSON.parse(storedPlaylists) : [];
     setPlaylists(parsedPlaylists);
-  
+
     if (parsedPlaylists.length > 0) {
       setSelectedPlaylist(parsedPlaylists[0].id);
     }
@@ -120,8 +120,6 @@ const AlbumDetail = ({
     setShowModal(false);
   };
 
-
-
   return (
     <div className={styles.albumDetail}>
       <img src={imageUrl} alt={title} className={styles.albumImage} />
@@ -153,7 +151,6 @@ const AlbumDetail = ({
         </div>
         <Link href="" onClick={handleBackClick} className={styles.button}></Link>
       </div>
-
       {showModal && (
         <div className={styles.modal}>
           <h2>Ajouter le titre à une playlist</h2>
@@ -164,8 +161,6 @@ const AlbumDetail = ({
               </option>
             ))}
           </select>
-
-
           <button onClick={handleAddToPlaylist}>➕</button>
           <button onClick={() => setShowModal(false)}>Fermer</button>
         </div>

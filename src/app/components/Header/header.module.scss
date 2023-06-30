@@ -26,14 +26,12 @@
         position: relative;
 
         input {
-
             padding: 10px 20px 10px 10px;
             font-size: 16px;
             border: none;
             border-radius: 4px;
             width: 30vw;
             outline-style: none;
-
         }
 
         input::placeholder {
@@ -63,37 +61,31 @@
     }
 
     nav {
-    
-            list-style-type: none;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 15px 0px 15px 0px;
+        padding: 0;
+
+        .like {
+            text-decoration: none;
+            font-size: 20px;
             display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 15px 0px 15px 0px;
-            padding: 0;
+            transition: transform 200ms;
 
-          
-                .like {
-                    background-image: url(/assets/like.svg);
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    height: 17px;
-                    width: 19px;
-                    display: flex;
-                    transition: transform 200ms;
-
-                    &:hover {
-                        transform: scale(1.05);
-                    }
-                }
-            .playlist {
-                font-size: 20px;
-               
-                text-decoration: none;
-                &:hover {
-                    transform: scale(1.05);
-                }
+            &:hover {
+                transform: scale(1.05);
             }
-        
+        }
+
+        .playlist {
+            font-size: 19px;
+            text-decoration: none;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
     }
 }

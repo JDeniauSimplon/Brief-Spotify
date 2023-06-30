@@ -43,7 +43,8 @@ const TrackDetail: React.FC<TrackDetailProps> = ({
   duration,
   artistImageUrl,
   artistImageTitle,
-  trackId
+  trackId,
+  
 }) => {
   const [likedTracks, setLikedTracks] = useState<LikedTrack[]>([]);
 

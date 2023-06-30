@@ -8,12 +8,11 @@ let plusSymbol = '\u2795';
 
 const Header = () => {
     const [search, setSearch] = useState('');
- 
+
 
     const handleSearchInput = (event: ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
     };
-
 
     const handleSearchSubmit = () => {
         if (search.trim() === '') {
@@ -37,10 +36,8 @@ const Header = () => {
                 <button role="button" onClick={handleSearchSubmit} className={styles.magnifyingGlass}></button>
             </div>
             <nav>
-              <Link className={styles.playlist} href="/playlist">{plusSymbol}</Link>
-                        <Link className={styles.like} href='/like' />
-                   
-                
+                <Link className={styles.playlist} href="/playlist">{plusSymbol}</Link>
+                <Link className={styles.like} href='/like' >❤️</Link>
             </nav>
         </div>
     );

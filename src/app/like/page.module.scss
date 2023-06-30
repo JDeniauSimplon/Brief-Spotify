@@ -30,15 +30,13 @@
     }
 
     .fav {
-     
       background-color: black;
       color: white;
       padding: 10px;
       max-width: 85vw;
-    min-width: 85vw;
-    text-align: center;
-    margin: 10px;
-
+      min-width: 85vw;
+      text-align: center;
+      margin: 10px;
     }
 
     ul {
@@ -89,7 +87,6 @@
         .trackNameArtistImage {
           display: flex;
           align-items: center;
-
         }
 
         .titleButton {

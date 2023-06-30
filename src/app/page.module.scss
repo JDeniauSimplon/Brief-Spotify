@@ -8,7 +8,7 @@
   padding-top: 52px;
 
   .childcontainer {
-    margin: 10px;
+    margin-bottom: 10px;
     width: 94vw;
     background-color: rgb(85, 85, 85);
     display: flex;
@@ -21,9 +21,13 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
+    .albumCardList {
+      display: flex;
+      flex-wrap: wrap;
+      width: 50vw;
+    }
     &::-webkit-scrollbar {
       width: 0px;
-   
     }
 
     @media (min-width: 880px) {

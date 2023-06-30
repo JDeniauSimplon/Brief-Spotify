@@ -87,20 +87,18 @@ const CreatePlaylist = () => {
     setPlaylists(newPlaylists);
   };
 
-
-
   const handleLikeClick = (trackId: string) => {
     const updatedPlaylists = playlists.map(playlist => {
       const updatedTracks = playlist.tracks.map(track => {
         if (track.id === trackId) {
-          const updatedTrack = { ...track, liked: !track.liked };
+          const updatedTrack = { ...track};
           return updatedTrack;
         }
         return track;
       });
       return { ...playlist, tracks: updatedTracks };
     });
-  
+
     let updatedLikedTracks: Track[] = likedTracks;
     const isLiked = likedTracks.some(likedTrack => likedTrack.id === trackId);
     if (isLiked) {
@@ -111,13 +109,11 @@ const CreatePlaylist = () => {
         updatedLikedTracks = [...likedTracks, track];
       }
     }
-  
+
     setLikedTracks(updatedLikedTracks);
     setPlaylists(updatedPlaylists);
-  
     localStorage.setItem('likedTracks', JSON.stringify(updatedLikedTracks));
   };
-  
 
   const isTrackLiked = (trackId: string) => {
     return likedTracks.some(likedTrack => likedTrack.id === trackId);
@@ -127,23 +123,25 @@ const CreatePlaylist = () => {
     <div className={styles.container}>
       <div className={styles.childcontainer}>
         <span className={styles.playlist}>Mes playlists :</span>
-        <input
+        <div className={styles.playlistForm}><input
           type="text"
           value={newPlaylistName}
           onChange={handleNameChange}
           placeholder="Nom de la nouvelle playlist"
         />
-        <button onClick={handleSubmitClick}>Créer la playlist</button>
+          <button onClick={handleSubmitClick}>Créer la playlist</button>
+        </div>
         {playlists.map((playlist: Playlist) => (
           <div key={playlist.id} className={styles.playlistCard}>
             <h2>{playlist.name}</h2>
-            <button onClick={() => handleRemovePlaylist(playlist.id)}>Supprimer la playlist</button>
             <ul>
               {playlist.tracks.map((track: Track) => (
                 <li key={track.id}>
+                  <div className={styles.trackLogo}></div>
                   <Link className={styles.titleButton} href={`/track/${track.id}`}>
-                    {`${track.name}`}
+                    {`${track.name}`} - {`${track.artist}`}
                   </Link>
+                  <img src={track.artistImage} className={styles.artistImage} />
                   <button
                     className={isTrackLiked(track.id) ? styles.likeButtonActive : styles.likeButton}
                     onClick={() => handleLikeClick(track.id)}
@@ -154,6 +152,7 @@ const CreatePlaylist = () => {
                 </li>
               ))}
             </ul>
+            <button className={styles.playlistCardButton} onClick={() => handleRemovePlaylist(playlist.id)}>Supprimer la playlist</button>
           </div>
         ))}
       </div>

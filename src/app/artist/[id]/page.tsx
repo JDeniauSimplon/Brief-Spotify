@@ -9,18 +9,32 @@ const Artist = async ({
 }) => {
   const artistId = params.id;
   const thisArtist = await fetchSpotifyApi(`artists/${artistId}`);
+  const artistGenres = thisArtist.genres; 
+  const artistName = thisArtist.name; 
+  
+  const similarArtists = (await fetchSpotifyApi(`artists/${artistId}/related-artists`)).artists;
+  
+  // on récupère les albums de l'artiste
+  const artistAlbums = (await fetchSpotifyApi(`artists/${artistId}/albums`)).items.map(album => ({
+    id: album.id,
+    name: album.name,
+    imageUrl: album.images[0]?.url, 
+    artistName: album.artists[0]?.name, 
+  }));
 
   return (
     <div className={styles.container}>
       <div className={styles.childcontainer}>
-        <div className={styles.cards}>
           <ArtistDetail
             title={thisArtist?.name}
             imageUrl={thisArtist?.images[0].url}
+            artistName={artistName} 
+            artistGenres={artistGenres} 
+            similarArtists={similarArtists}
+            albums={artistAlbums} 
           />
         </div>
       </div>
-    </div>
   );
 };
 

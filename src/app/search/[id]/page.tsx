@@ -22,7 +22,6 @@ interface Params {
 
 const SearchPage = async ({ params }: { params: Params }) => {
   const { id: searchQuery, filterType = 'album,playlist,track,artist' } = params;
-
   const thisSearch = await fetchSpotifyApi(`search?q=${searchQuery}&type=${filterType}&market=FR&limit=50&offset=0`) as SearchResults;
 
   return (

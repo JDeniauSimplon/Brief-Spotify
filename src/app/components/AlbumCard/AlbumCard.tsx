@@ -1,5 +1,5 @@
 'use client'
-// AlbumCard.tsx
+
 import { useState, useEffect, useRef } from 'react';
 import styles from './albumcard.module.scss';
 import Link from 'next/link';

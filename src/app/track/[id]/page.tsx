@@ -25,7 +25,6 @@ interface Params {
 
 const TrackPage = async ({ params }: { params: Params }) => {
   const { id: trackId } = params;
-
   const thisTrack = (await fetchSpotifyApi(`tracks/${trackId}?market=FR`)) as Track;
   const thisArtist = (await fetchSpotifyApi(`artists/${thisTrack?.artists[0].id}`)) as Artist;
 
